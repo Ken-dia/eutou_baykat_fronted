@@ -15,6 +15,8 @@ import { BoardAdminComponent } from './backoffice/board-admin/board-admin.compon
 import { BoardUserComponent } from './backoffice/board-user/board-user.component';
 import { authInterceptorProviders } from './core/_helpers/auth.interceptor';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    TypeaheadModule.forRoot(),
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

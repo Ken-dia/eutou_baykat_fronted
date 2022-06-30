@@ -109,7 +109,18 @@
               </div>
               <div class="col-6 form-group">
                 <label for="region">Région</label>
-                <input
+                <input [(ngModel)]="form.region"
+        [typeahead]="regions"
+        (typeaheadNoResults)="typeaheadNoResults($event)"
+        class="form-control"
+        #region="ngModel"
+        name="region"
+        >
+        <div class="alert alert-danger" *ngIf="noResult"><small> Region introuvable</small></div>
+        <div class="alert-danger" *ngIf="region.errors && f.submitted">
+          <div *ngIf="region.errors['required']">Votre nom est Obligatoire</div>
+        </div>
+<!--                 <input
                   type="text"
                   class="form-control"
                   name="region"
@@ -127,7 +138,7 @@
                   <div *ngIf="region.errors['maxlength']">
                     region must be at most 20 characters
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="col-6 form-group">
                 <label for="email">Email</label>

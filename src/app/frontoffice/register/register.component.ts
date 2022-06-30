@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
+import { RegionService } from '../services/region/region.service';
 
 @Component({
   selector: 'app-register',
@@ -21,10 +22,27 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-
-  constructor(private authService: AuthService) { }
+  noResult = false;
+  regions? : any;
+  selected?: string;
+  constructor(private authService: AuthService, private regionService: RegionService) { }
 
   ngOnInit(): void {
+    this.getRegions();
+    console.log(this.regions);
+  }
+  getRegions() {
+    this.regionService.index().subscribe({
+      next: data => {
+        this.regions = data;
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
+  }
+  typeaheadNoResults(event: boolean): void {
+    this.noResult = event;
   }
   onSubmit(): void {
 
