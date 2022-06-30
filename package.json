@@ -1,5 +1,5 @@
 {
-  "name": "eutou-baykat-frontend",
+  "name": "eutou-baykat-fronted",
   "version": "0.0.0",
   "engines": { "node": "16.14.2", "npm": "8.5.0" },
   "scripts": {
