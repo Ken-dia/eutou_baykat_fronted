@@ -1,0 +1,29 @@
+<div class="product">
+  <div class="img-container">
+    <a href="#">
+      <img src="../../../assets/img/products/{{ product.img }} " alt="" />
+    </a>
+    <button class="favourite-icon">
+      <i class="fa-regular fa-heart"></i>
+    </button>
+  </div>
+  <div class="product-locality-details">
+    <p class="name">{{ product.name }}</p>
+    <p class="locality">{{ product.locality }}</p>
+  </div>
+  <div class="product-price-details">
+    <div class="btn-container">
+      <button
+        *ngFor="let quantity of product.quantities"
+        [ngClass]="{
+          'btn-sm-active': product.quantities.indexOf(quantity) === 0
+        }"
+        href="#"
+        class="btn-sm"
+      >
+        {{ quantity.interval }}
+      </button>
+    </div>
+    <p class="price">525 cfca/kg</p>
+  </div>
+</div>

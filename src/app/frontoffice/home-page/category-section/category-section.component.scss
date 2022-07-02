@@ -1,0 +1,18 @@
+.container {
+  padding: 92px 0;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  gap: 32px;
+  justify-items: center;
+  justify-content: center;
+}
