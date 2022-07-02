@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { FrontofficeComponent } from './frontoffice/frontoffice.component';
 import { BackofficeComponent } from './backoffice/backoffice.component';
 import { CoreComponent } from './core/core.component';
-import { SharedComponent } from './shared/shared.component';
 import { LoginComponent } from './frontoffice/login/login.component';
 import { RegisterComponent } from './frontoffice/register/register.component';
 import { ProfileComponent } from './backoffice/profile/profile.component';
@@ -24,7 +23,6 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     FrontofficeComponent,
     BackofficeComponent,
     CoreComponent,
-    SharedComponent,
     LoginComponent,
     RegisterComponent,
     ProfileComponent,

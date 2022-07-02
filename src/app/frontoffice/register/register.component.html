@@ -1,11 +1,11 @@
 <div class="register-page">
   <div class="row justify-content-md-center">
-    <div class="col-md-8">
+    <div class="col-md-7">
       <div class="align-self-center">
         <div class="">
           <div class="card card-container form-bande">
             <img
-              class="align-self-center rounded-circle"
+              class="align-self-center rounded-circle mb-3"
               id="profile-img"
               src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
               width="60px"
@@ -38,6 +38,24 @@
                   </div>
                   <div *ngIf="username.errors['maxlength']">
                     Username must be at most 20 characters
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  [(ngModel)]="form.email"
+                  required
+                  email
+                  #email="ngModel"
+                />
+                <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                  <div *ngIf="email.errors['required']">Email est obligatoire</div>
+                  <div *ngIf="email.errors['email']">
+                    Votre email n'est pas valide
                   </div>
                 </div>
               </div>
@@ -110,52 +128,15 @@
               <div class="col-6 form-group">
                 <label for="region">Région</label>
                 <input [(ngModel)]="form.region"
-        [typeahead]="regions"
-        (typeaheadNoResults)="typeaheadNoResults($event)"
-        class="form-control"
-        #region="ngModel"
-        name="region"
-        >
-        <div class="alert alert-danger" *ngIf="noResult"><small> Region introuvable</small></div>
-        <div class="alert-danger" *ngIf="region.errors && f.submitted">
-          <div *ngIf="region.errors['required']">Votre nom est Obligatoire</div>
-        </div>
-<!--                 <input
-                  type="text"
+                  [typeahead]="regions"
+                  (typeaheadNoResults)="typeaheadNoResults($event)"
                   class="form-control"
-                  name="region"
-                  [(ngModel)]="form.region"
-                  required
-                  minlength="3"
-                  maxlength="20"
                   #region="ngModel"
-                />
+                  name="region"
+                >
+                <div class="alert alert-danger" *ngIf="noResult"><small> Region introuvable</small></div>
                 <div class="alert-danger" *ngIf="region.errors && f.submitted">
-                  <div *ngIf="region.errors['required']">Votre nom est Obligatoire</div>
-                  <div *ngIf="region.errors['minlength']">
-                    region must be at least 3 characters
-                  </div>
-                  <div *ngIf="region.errors['maxlength']">
-                    region must be at most 20 characters
-                  </div>
-                </div> -->
-              </div>
-              <div class="col-6 form-group">
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  name="email"
-                  [(ngModel)]="form.email"
-                  required
-                  email
-                  #email="ngModel"
-                />
-                <div class="alert-danger" *ngIf="email.errors && f.submitted">
-                  <div *ngIf="email.errors['required']">Email est obligatoire</div>
-                  <div *ngIf="email.errors['email']">
-                    Votre email n'est pas valide
-                  </div>
+                  <div *ngIf="region.errors['required']">Région est Obligatoire</div>
                 </div>
               </div>
               <div class="col-6 form-group">
@@ -186,11 +167,15 @@
                   required
                   minlength="6"
                   #password_confirm="ngModel"
+                  pattern="\b{{form.password}}\b"
                 />
                 <div class="alert-danger" *ngIf="password_confirm.errors && f.submitted">
                   <div *ngIf="password_confirm.errors['required']">Le mot de passe est Obligatoire</div>
                   <div *ngIf="password_confirm.errors['minlength']">
                     le mot de passe doit dépasser 6 caractéres.
+                  </div>
+                  <div *ngIf="password_confirm.errors['pattern']">
+                    <small>Veuillez saisir des mots de passe identiques !</small>
                   </div>
                 </div>
               </div>
@@ -202,14 +187,8 @@
               </div>
             </div>
           </form>
-            <div class="ccol-6alert alert-success" *ngIf="isSuccessful">
-              Votre compte est créé avec success !
-            </div>
           </div>
         </div>
-        <!-- <div class="card card-container img-bande">
-          <h3 class="text-white"><strong>Eutou BayKat </strong></h3>
-        </div> -->
       </div>
     </div>
   </div>

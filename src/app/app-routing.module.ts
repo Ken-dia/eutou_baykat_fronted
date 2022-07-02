@@ -1,3 +1,4 @@
+import { BackofficeComponent } from './backoffice/backoffice.component';
 import { LoginComponent } from './frontoffice/login/login.component';
 import { RegisterComponent } from './frontoffice/register/register.component';
 import { ProfileComponent } from './backoffice/profile/profile.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'admin', component: BoardAdminComponent },
+  { path: 'dashboard', component: BackofficeComponent }
 ];
 
 @NgModule({

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
+import { TokenStorageService } from '../services/auth/token-storage.service';
 import { RegionService } from '../services/region/region.service';
 
 @Component({
@@ -25,7 +27,10 @@ export class RegisterComponent implements OnInit {
   noResult = false;
   regions? : any;
   selected?: string;
-  constructor(private authService: AuthService, private regionService: RegionService) { }
+  isLoggedIn = false;
+  isLoginFailed = false;
+  roles: string[] = [];
+  constructor(private authService: AuthService, private regionService: RegionService, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit(): void {
     this.getRegions();
@@ -52,10 +57,28 @@ export class RegisterComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.login(username, password);
       },
       error: err => {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
+      }
+    });
+  }
+  login(username: string, password: string) {
+    this.authService.login(username, password).subscribe({
+      next: data => {
+        console.log(data);
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        this.router.navigate(['dashboard']);
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
       }
     });
   }
