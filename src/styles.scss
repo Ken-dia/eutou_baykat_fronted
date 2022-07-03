@@ -84,3 +84,73 @@ button {
   background-color: transparent;
   cursor: pointer;
 }
+
+.avatar {
+  position: absolute;
+  top:-2%; left: 50%;
+  /* postulat de départ */
+  //top: 50%; left: 50%; /* à 50%/50% du parent référent */
+  transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+  width: 65px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  margin-bottom: 10px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.auth-form-container {
+  position: relative;
+  width:430px;
+  height:auto;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  border:1px solid #ccc;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.auth-form-container .input {
+  box-shadow:0px 1px 2px rgba(31,54,81,.2) !important;
+}
+.auth-form-container .input:focus {
+  border-color:#1F3651 !important;
+}
+.auth-form-container.hovered{
+  box-shadow: 0px 2px 5px 1px #ccc;
+}
+button.is-login {
+  background-color: #467806;
+  //-color: !important;
+  color:#fff;
+  padding: 10px;
+  width: auto;
+}
+button.is-login:hover {
+  color:#fff;
+}
+button.is-login:focus, .button.is-login:active {
+  outline:none !important;
+  box-shadow: none !important;
+}
+
+button.is-login.outlined {
+  background-color: #fff !important;
+  color: #1F3651 !important;
+  border: 1px solid #1F3651;
+  color: #1F3651;
+}
+.d-none {
+  display: none!important;
+}
+@media screen and (max-width:630px) {
+  .auth-form-container {
+      border:none !important;
+  }
+}
