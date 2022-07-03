@@ -1,1 +1,43 @@
-<p>backoffice works!</p>
+<div id="app">
+  <nav class="navbar navbar-expand">
+    <a href="#" class="navbar-brand">Eutou Baykat</a>
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register">S'inscrire</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Se connecter</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a type="button" class="nav-link" (click)="logout()" style="text-decoration : none; color: white">Deconnexion</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="container" *ngIf="isLoggedIn; else loggedOut">
+      <header class="jumbotron">
+        <h3>
+          <strong>{{ currentUser.username }}</strong> Profile
+        </h3>
+      </header>
+      <p>
+        <strong>Email:</strong>
+        {{ currentUser.email }}
+      </p>
+      <strong>Roles:</strong>
+      <ul>
+        <li *ngFor="let role of currentUser.roles">
+          {{ role }}
+        </li>
+      </ul>
+    </div>
+    <ng-template #loggedOut>
+      Please login.
+    </ng-template>
+  </div>
+</div>

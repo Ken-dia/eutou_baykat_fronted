@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TokenStorageService } from './frontoffice/services/auth/token-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'eutou_baykat_frontend';
+
+  constructor() { }
+  ngOnInit(): void {
+
+  }
+
 }
