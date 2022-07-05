@@ -1,4 +1,4 @@
-import { UserService } from './../../frontoffice/services/user/user.service';
+import { UserService } from '../../../frontoffice/services/user/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
