@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth/auth.service';
-import { TokenStorageService } from '../services/auth/token-storage.service';
-import { RegionService } from '../services/region/region.service';
+import { AuthService } from '../../services/auth/auth.service';
+import { TokenStorageService } from '../../services/auth/token-storage.service';
+import { RegionService } from '../../services/region/region.service';
 
 @Component({
   selector: 'app-register',

@@ -1,21 +1,27 @@
-import { FrontofficeComponent } from './frontoffice/frontoffice.component';
-import { BackofficeComponent } from './backoffice/backoffice.component';
-import { LoginComponent } from './frontoffice/login/login.component';
-import { RegisterComponent } from './frontoffice/register/register.component';
-import { ProfileComponent } from './backoffice/profile/profile.component';
-import { BoardUserComponent } from './backoffice/board-user/board-user.component';
-import { BoardAdminComponent } from './backoffice/board-admin/board-admin.component';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+//import {} from '@app/c'
+
 const routes: Routes = [
-  { path: '', component: FrontofficeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'user', component: BoardUserComponent },
-  { path: 'admin', component: BoardAdminComponent },
-  { path: 'dashboard', component: BackofficeComponent }
+  {
+    path: "",
+    loadChildren: () => import('./frontoffice/frontoffice.module').then(mod => mod.FrontofficeModule),
+  },
+  {
+    path: "dashboard",
+    loadChildren: () => import('./backoffice/backoffice.module').then( mod => mod.BackofficeModule)
+  },
+  {
+    path: "",
+    redirectTo: "",
+    pathMatch: "full"
+  },
+  {
+    path: "**",
+    component: NotFoundComponent
+  }
 ];
 
 @NgModule({
