@@ -15,7 +15,62 @@ export class BackofficeComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-
+  selectedColor = "13EB28";
+  menus?: any;
+  menuAdmin = [
+    {
+    icon : 'dashboard',
+    name: 'Dashboard',
+    link: '/dashboard/admin/stats'
+    },
+    {
+      icon : 'group',
+      name: 'Utilisateurs',
+      link: '/dashboard/admin/users'
+    },
+    {
+      icon : 'manage_accounts',
+      name: 'Roles',
+      link: '/dashboard/admin/roles'
+    },
+    {
+      icon : 'label',
+      name: 'Catégories',
+      link: '/dashboard/admin/categories'
+    },
+    {
+      icon : 'bookmarks',
+      name: 'Produits',
+      link: '/dashboard/admin/produits'
+    }
+  ];
+  menuUser = [
+    {
+    icon : 'dashboard',
+    name: 'Dashboard',
+    link: '/dashboard/user/stats'
+    },
+    {
+      icon : 'campaign',
+      name: 'Créer une annonce',
+      link: '/dashboard/user/creer-annonce'
+    },
+    {
+      icon : 'manage_history',
+      name: 'Gérer mes annonces',
+      link: '/dashboard/user/mes-annonces'
+    },
+    {
+      icon : 'favorite',
+      name: 'Mes favoris',
+      link: '/dashboard/user/favoris'
+    },
+    /* {
+      icon : 'bookmarks',
+      name: 'Produits',
+      link: '/dashboard/admin/produits'
+    } */
+  ]
   constructor(private token: TokenStorageService, private tokenStorageService: TokenStorageService, private router: Router) { }
 
   ngOnInit(): void {
@@ -24,9 +79,11 @@ export class BackofficeComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
+      console.log(this.roles);
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      this.showModeratorBoard = this.roles.includes('ROLE_ACHETEUR');
       this.username = user.username;
+      this.showAdminBoard ? this.menus = this.menuAdmin : this.menus = this.menuUser;
     }
   }
   logout(): void {

@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['dashboard/user/profile']);
       },
       error: err => {
         this.errorMessage = err.error.message;
