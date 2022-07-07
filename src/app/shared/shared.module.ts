@@ -8,6 +8,7 @@ import { PartnerSectionComponent } from './components/partner-section/partner-se
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { AdvertisingComponent } from './components/advertising/advertising.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
+import { MaterialModule } from './material.module';
 
 
 
@@ -28,10 +29,12 @@ import { ProductItemComponent } from './components/product-item/product-item.com
     TopbarComponent,
     AdvertisingComponent,
     CategoryTableItemComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    MaterialModule
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ]
 })
 export class SharedModule { }

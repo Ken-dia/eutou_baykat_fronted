@@ -11,7 +11,7 @@ export class BoardAdminComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getAdminBoard().subscribe({
+    /* this.userService.getAdminBoard().subscribe({
       next: data => {
         this.content = data;
       },
@@ -19,7 +19,7 @@ export class BoardAdminComponent implements OnInit {
         this.content = JSON.parse(err.error).message;
       }
     });
-
+ */
   }
 
 }
