@@ -1,26 +1,72 @@
  <div id="app">
   <nav class="navbar navbar-expand">
-    <a href="#" class="navbar-brand">Eutou Baykat</a>
-    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register">S'inscrire</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Se connecter</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/profile">{{ username }}</a>
-      </li>
-      <li class="nav-item">
-        <a type="button" class="nav-link" (click)="logout()" style="text-decoration : none; color: white">Deconnexion</a>
-      </li>
-    </ul>
-  </nav>
   <div class="container">
+      <a href="/" class="navbar-brand">Eutou Baykat</a>
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register">S'inscrire</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Se connecter</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+        <li class="nav-item">
+          <button mat-icon-button color="basic" aria-label="Example icon button with a menu icon">
+            <mat-icon>circle_notifications</mat-icon>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>account_circle</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+               <mat-icon>person</mat-icon>
+               <span>Mon compte</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>manage_accounts</mat-icon>
+              <span>Parametres</span>
+            </button>
+            <button mat-menu-item (click)="logout()">
+               <mat-icon>logout</mat-icon>
+              <span>Deconnexion</span>
+            </button>
+          </mat-menu>
+        </li>
+
+      </ul>
+  </div>
+</nav>
+  <div class="container main">
      <div class="container" *ngIf="isLoggedIn; else loggedOut">
-      <router-outlet></router-outlet>
+      <div class="row">
+        <div class="col-3">
+          <mat-card class="menu-card">
+            <div class="header-card">
+              <img
+              class="avatar-menu rounded-circle"
+              id="profile-img"
+              src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            />
+            <h3>{{ username }}</h3>
+            </div>
+            <mat-card-content>
+              <mat-selection-list #menu [multiple]="false">
+                <mat-list-option *ngFor="let item of menus" [value]="item">
+                  <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
+                  <a matLine [routerLink]="item.link" style="text-decoration: none; color: black">{{ item.name }}</a>
+                </mat-list-option>
+              </mat-selection-list>
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-9">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
    </div>
     <ng-template #loggedOut>
       Please login.
