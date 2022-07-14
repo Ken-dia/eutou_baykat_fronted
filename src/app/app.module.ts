@@ -20,7 +20,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     CoreModule,
     BackofficeModule
-
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
