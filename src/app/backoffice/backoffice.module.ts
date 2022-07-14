@@ -13,6 +13,7 @@ import { CategorieComponent } from './components/categorie/categorie.component';
 import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
 import { CreerAnnonceComponent } from './components/creer-annonce/creer-annonce.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { ParametreComponent } from './components/parametre/parametre.component';
 
 
 
@@ -28,12 +29,13 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     CategorieComponent,
     StatsAdminComponent,
     CreerAnnonceComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ParametreComponent
   ],
   imports: [
     CommonModule,
     BackOfficeRoutingModule,
     SharedModule
-  ]
+  ],
 })
 export class BackofficeModule { }

@@ -17,6 +17,7 @@ export class BackofficeComponent implements OnInit {
   username?: string;
   selectedColor = "13EB28";
   menus?: any;
+  tokenStage?: any;
   menuAdmin = [
     {
     icon : 'dashboard',
@@ -76,10 +77,12 @@ export class BackofficeComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     this.isLoggedIn = !!this.tokenStorageService.getToken();
+    this.tokenStage = this.token.getToken();
+    console.log(this.tokenStage);
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
-      console.log(this.roles);
+      //console.log(this.roles);
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = this.roles.includes('ROLE_ACHETEUR');
       this.username = user.username;

@@ -1,3 +1,4 @@
+import { RegionService } from './../../../frontoffice/services/region/region.service';
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../../../frontoffice/services/auth/token-storage.service';
 
@@ -8,11 +9,25 @@ import { TokenStorageService } from '../../../frontoffice/services/auth/token-st
 })
 export class ProfileComponent implements OnInit {
   currentUser: any;
-  constructor(private token: TokenStorageService) { }
+  regions = [];
+  edited: Boolean =  false;
+  constructor(private token: TokenStorageService,  private regionService: RegionService) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
-    console.log(this.currentUser)
+    this.getRegions();
+    // console.log(this.currentUser)
   }
+  getRegions() {
+    this.regionService.index().subscribe({
+      next: data => {
+        this.regions = data;
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
+  }
+
 
 }

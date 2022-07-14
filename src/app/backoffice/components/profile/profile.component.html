@@ -1,25 +1,72 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
+<div class="container" *ngIf="!edited else formProfil">
   <header class="jumbotron">
-    <h3>
-      <strong>{{ currentUser.username }}</strong> Profile
-    </h3>
+    <div class="d-flex">
+      <div>
+        <img
+          class="avatar-img rounded-circle"
+          id="profile-img"
+          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        />
+        <h1 class="mt-3">
+          <strong>{{ currentUser.username }}</strong>
+        </h1>
+      </div>
+      <div class="profil">
+        <h3>Nom:</h3>
+        <h3>Prénom:</h3>
+        <h3>Email:</h3>
+        <h3>Téléphone:</h3>
+        <h3>Region:</h3>
+      </div>
+      <div class="profil">
+        <h3>{{currentUser.nom}}</h3>
+        <h3>{{currentUser.prenom}}</h3>
+        <h3>{{currentUser.email}}</h3>
+        <h3>{{currentUser.telephone}}</h3>
+        <h3>{{currentUser.region}}</h3>
+      </div>
+
+    </div>
+
   </header>
-  <!-- <p>
-    <strong>Token:</strong>
-    {{ currentUser.accessToken.substring(0, 20) }} ...
-    {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
-  </p> -->
-  <p>
-    <strong>Email:</strong>
-    {{ currentUser.email }}
-  </p>
-  <strong>Roles:</strong>
-  <ul>
-    <li *ngFor="let role of currentUser.roles">
-      {{ role }}
-    </li>
-  </ul>
+    <div class="float-right" *ngIf="!edited; else  formProfil">
+      <button mat-raised-button color="primary" (click)="edited=true">Modifier</button>
+    </div>
 </div>
 <ng-template #loggedOut>
   Please login.
+</ng-template>
+<ng-template #formProfil>
+  <div class="container jumbotron">
+    <h1>Edition de profile</h1>
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="Entrer votre nom" [value]="currentUser.username">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Entrer votre nom" [value]="currentUser.email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input matInput placeholder="Entrer votre nom" [value]="currentUser.nom">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Prénom</mat-label>
+      <input matInput placeholder="Entrer votre nom" [value]="currentUser.prenom">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>téléphone</mat-label>
+      <input matInput placeholder="Entrer votre nom" [value]="currentUser.telephone">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Région</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let region of regions" [value]="currentUser.region">{{region}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+      <button mat-raised-button class="is-login" (click)="edited=false">Enregistrer</button>
+  </div>
+
 </ng-template>
