@@ -4,8 +4,7 @@
 
 export const environment = {
   production: true,
-  // apiUrl: 'https://eutou-baykat-backend.herokuapp.com/api/',
-  apiUrl: 'http://localhost:8044/api/',
+  apiUrl: 'https://eutou-baykat-backend.herokuapp.com/api/',
   firebaseConfig: {
     apiKey: "AIzaSyDXNAwhcSsudVgYd5cFb5tMlPP4phFAVVU",
     authDomain: "eutou-baykat.firebaseapp.com",
