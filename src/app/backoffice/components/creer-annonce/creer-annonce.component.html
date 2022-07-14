@@ -1,0 +1,151 @@
+<div>
+  <!-- <mat-toolbar *ngIf="currentFile" class="progress-bar">
+    <mat-progress-bar color="accent" [value]="progress"></mat-progress-bar>
+    <span class="progress">{{ progress }}%</span>
+  </mat-toolbar> -->
+  <div class="row">
+    <div class="col">
+      <div>
+        <mat-toolbar>
+          <input type="file" matInput multiple (change)="selectFile($event)"/>
+          <button
+            mat-flat-button
+            color="primary"
+            [disabled]="!selectedFiles"
+            (click)="upload()"
+          >
+            Upload
+          </button>
+        </mat-toolbar>
+      </div>
+      <div *ngIf="message" class="message">
+        {{ message }}
+      </div>
+      <mat-toolbar *ngIf="currentFile" class="progress">
+        <div
+          class="progress-bar progress-bar-info"
+          role="progressbar"
+          attr.aria-valuenow="{{ progress }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [ngStyle]="{ width: progress + '%' }"
+        >
+          {{ progress }}%
+        </div>
+      </mat-toolbar>
+
+    </div>
+    <div class="col">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Liste des Images du Produit</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngIf="!tmpImages">
+            <p class="lead d-flex justify-content-center">Aucune Image</p>
+          </div>
+          <mat-list role="list">
+            <div role="listitem" *ngFor="let tmp of tmpImages" class="d-flex justify-content-between">
+              <a target="_blank" href="{{ tmp.url }}" class="text-success">{{ tmp.name }}</a>
+              <button (click)="deleteDialog(tmp.name)">
+                <mat-icon class="btn-outline-danger">delete</mat-icon>
+              </button>
+            </div>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <mat-divider class="mt-2 mb-2"></mat-divider>
+  <form (ngSubmit)="saveProduct()" [formGroup]="saveForm" ovalidate>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="legacy">
+          <mat-label>Libelle</mat-label>
+          <input matInput formControlName="libelle">
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>Quantité</mat-label>
+          <input type="number" matInput  formControlName="quantite">
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>Catégories</mat-label>
+          <mat-select multiple  formControlName="categories">
+            <mat-option *ngFor="let c of categories" [value]="c._id">{{c.libelle}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="saveForm.get('categories')?.touched && !saveForm.get('categories')?.valid">
+            Catégories Requis
+          </mat-error>
+        </mat-form-field>
+        <div
+        formArrayName="prices"
+          *ngFor="let address of priceList.controls; let i = index"
+        >
+          <div class="row" [formGroupName]="i">
+            <div class="col-sm-3">
+              <mat-form-field appearance="legacy" class="me-2">
+                <mat-label>Prix</mat-label>
+                <input type="number" matInput formControlName="prix">
+                <mat-error *ngIf="priceList.controls[i].get('prix')?.touched && !priceList.controls[i].get('prix')?.valid">
+                  Prix Requis
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+              <mat-form-field appearance="legacy" class="me-2">
+                <mat-label>Quantité Min</mat-label>
+                <input type="number" matInput formControlName="min">
+                <mat-error *ngIf="priceList.controls[i].get('min')?.touched && !priceList.controls[i].get('min')?.valid">
+                  Min Requis
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+              <mat-form-field appearance="legacy" class="me-2">
+                <mat-label>Quantité Max</mat-label>
+                <input type="number" matInput formControlName="max">
+                <mat-error *ngIf="priceList.controls[i].get('max')?.touched && !priceList.controls[i].get('max')?.valid">
+                  Max Requis
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+              <mat-form-field appearance="legacy">
+                <mat-label>Unite</mat-label>
+                <mat-select  formControlName="unite">
+                  <mat-option *ngFor="let u of unites" [value]="u._id">{{u.libelle}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="priceList.controls[i].get('unite')?.errors">
+                  Unite Requis
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-between">
+          <div class="col  mt-4">
+            <button mat-stroked-button class="btn-outline-secondary" (click)="addPrice()">
+              Ajouter prix
+            </button>
+          </div>
+          <div class="col  mt-4">
+            <button mat-stroked-button class="btn-danger" (click)="addPrice()">
+              Annuler
+            </button>
+          </div>
+          <div class="col  mt-4">
+            <button type="submit" mat-stroked-button class="btn-success" [disabled]="!saveForm.valid">
+              Enregistrer
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="legacy">
+          <mat-label>Description</mat-label>
+          <textarea matInput rows="12" formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

@@ -11,6 +11,8 @@ import { UsersComponent } from './components/users/users.component';
 import { ProduitComponent } from './components/produit/produit.component';
 import { CategorieComponent } from './components/categorie/categorie.component';
 import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
+import { CreerAnnonceComponent } from './components/creer-annonce/creer-annonce.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -24,7 +26,9 @@ import { StatsAdminComponent } from './components/stats-admin/stats-admin.compon
     UsersComponent,
     ProduitComponent,
     CategorieComponent,
-    StatsAdminComponent
+    StatsAdminComponent,
+    CreerAnnonceComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,

@@ -9,6 +9,10 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { AdvertisingComponent } from './components/advertising/advertising.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { MaterialModule } from './material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 
 
@@ -30,11 +34,14 @@ import { MaterialModule } from './material.module';
     AdvertisingComponent,
     CategoryTableItemComponent,
     ProductItemComponent,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ]
 })
 export class SharedModule { }

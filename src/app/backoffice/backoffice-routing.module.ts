@@ -9,6 +9,7 @@ import { RoleComponent } from './components/role/role.component';
 import { ProduitComponent } from './components/produit/produit.component';
 import { CategorieComponent } from './components/categorie/categorie.component';
 import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
+import { CreerAnnonceComponent } from './components/creer-annonce/creer-annonce.component';
 
 const routes: Routes = [
   { path: '', component: BackofficeComponent,
@@ -66,7 +67,7 @@ const routes: Routes = [
           },
           {
             path: "creer-annonce",
-            component: ProfileComponent
+            component: CreerAnnonceComponent
           },
           {
             path: "mes-annonces",
