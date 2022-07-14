@@ -11,6 +11,7 @@ import { UsersComponent } from './components/users/users.component';
 import { ProduitComponent } from './components/produit/produit.component';
 import { CategorieComponent } from './components/categorie/categorie.component';
 import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
+import { ParametreComponent } from './components/parametre/parametre.component';
 
 
 
@@ -24,12 +25,13 @@ import { StatsAdminComponent } from './components/stats-admin/stats-admin.compon
     UsersComponent,
     ProduitComponent,
     CategorieComponent,
-    StatsAdminComponent
+    StatsAdminComponent,
+    ParametreComponent
   ],
   imports: [
     CommonModule,
     BackOfficeRoutingModule,
     SharedModule
-  ]
+  ],
 })
 export class BackofficeModule { }

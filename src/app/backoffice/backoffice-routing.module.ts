@@ -9,6 +9,7 @@ import { RoleComponent } from './components/role/role.component';
 import { ProduitComponent } from './components/produit/produit.component';
 import { CategorieComponent } from './components/categorie/categorie.component';
 import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
+import { ParametreComponent } from './components/parametre/parametre.component';
 
 const routes: Routes = [
   { path: '', component: BackofficeComponent,
@@ -17,6 +18,10 @@ const routes: Routes = [
         path: "",
         redirectTo: "profile",
         pathMatch: "full"
+      },
+      {
+        path: 'parametre',
+        component: ParametreComponent
       },
 
       {
@@ -47,6 +52,10 @@ const routes: Routes = [
             component: StatsAdminComponent
           },
           {
+            path: 'parametre',
+            component: ParametreComponent
+          },
+          {
             path: "",
             redirectTo: "profile",
             pathMatch: "full"
@@ -75,6 +84,10 @@ const routes: Routes = [
           {
             path: "favoris",
             component: ProfileComponent
+          },
+          {
+            path: 'parametre',
+            component: ParametreComponent
           },
           {
             path: "stats",

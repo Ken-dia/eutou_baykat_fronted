@@ -13,19 +13,19 @@
       <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
         <li class="nav-item">
           <button mat-icon-button color="basic" aria-label="Example icon button with a menu icon">
-            <mat-icon>circle_notifications</mat-icon>
+            <mat-icon class="btn-icon">circle_notifications</mat-icon>
           </button>
         </li>
         <li class="nav-item">
           <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-            <mat-icon>account_circle</mat-icon>
+            <mat-icon class="btn-icon">account_circle</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item routerLink="profile">
                <mat-icon>person</mat-icon>
                <span>Mon compte</span>
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item routerLink="parametre">
               <mat-icon>manage_accounts</mat-icon>
               <span>Parametres</span>
             </button>

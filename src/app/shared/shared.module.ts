@@ -35,6 +35,6 @@ import { MaterialModule } from './material.module';
   imports: [
     CommonModule,
     MaterialModule
-  ]
+  ],
 })
 export class SharedModule { }

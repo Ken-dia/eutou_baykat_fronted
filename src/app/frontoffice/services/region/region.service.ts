@@ -15,6 +15,6 @@ export class RegionService {
 
   constructor(private http: HttpClient) { }
   index(): Observable<any> {
-    return this.http.get(API +'regions');
+    return this.http.get(API +'regions', httpOptions);
   }
 }
