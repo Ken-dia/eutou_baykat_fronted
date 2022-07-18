@@ -1,25 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import {  MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { CategoriesService } from '../../services/categories.service';
+import { Categorie } from '../../models/categorie.model';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-categorie',
@@ -28,19 +12,74 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class CategorieComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-
+  displayedColumns: string[] = ['libelle', 'description', 'actions'];
+  dataSource: Categorie[] = [];
+  modalRef?: BsModalRef;
+  public formTitle: string = 'Ajouter une categorie';
+  public btnTitle = 'Ajouter';
+  public selectedCategorie = <Categorie>{};
+  public libelle = new FormControl('', Validators.required);
+  public description = new FormControl('', Validators.required);
+  public showError: boolean = false;
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    //this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  constructor(public dialog: MatDialog) { }
+  constructor(private categorieService: CategoriesService,private modalService: BsModalService) { }
 
   ngOnInit(): void {
+    this.index()
   }
-  openDialog() {
-    //this.dialog.open(DialogElementsExampleDialog);
+ /*  getErrorMessage() {
+    if(this.libelle.hasError('required')) {
+      return 'Veuillez saisir le libellé.'
+    }
+    if(this.description.hasError('required')) {
+      return 'Veuillez saisir la description.'
+    }
+  } */
+  openModal(formCategorie: TemplateRef<any>, categorie: Categorie) {
+    this.modalRef = this.modalService.show(formCategorie);
+    if(categorie._id) {
+      this.formTitle = "Modier une categorie"
+      this.btnTitle = "Modifier";
+      this.selectedCategorie = categorie;
+      this.libelle.setValue(categorie.libelle);
+      this.description.setValue(categorie.description);
+    }
+  }
+  index() {
+    this.categorieService.getCategories().subscribe( data => this.dataSource = data);
+  }
+  close() {
+    this.modalRef?.hide()
+    this.libelle.reset();
+    this.description.reset();
+    this.selectedCategorie = <Categorie>{};
+    this.showError = false;
   }
 
+  save() {
+    if(!this.libelle.value || !this.description.value) {
+      this.showError = true;
+      return;
+    }
+    this.selectedCategorie.libelle = this.libelle.value;
+    this.selectedCategorie.description = this.description.value;
+    if(this.selectedCategorie._id) {
+      //Update
+      alert('API pas encore disponible !!')
+      this.close();
+    }
+    else {
+      alert('API pas encore disponible !!')
+      this.close();
+      //this.categorieService.add(this.selectedCategorie).subscribe( data => this.index())
+    }
+
+
+  }
+  delete(categorie: Categorie) {
+    alert('API pas encore disponible !!')
+  }
 }
