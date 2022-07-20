@@ -68,18 +68,18 @@ export class CategorieComponent implements OnInit {
     this.selectedCategorie.description = this.description.value;
     if(this.selectedCategorie._id) {
       //Update
-      alert('API pas encore disponible !!')
+      this.categorieService.update(this.selectedCategorie._id,this.selectedCategorie).subscribe( data => this.index())
       this.close();
     }
     else {
-      alert('API pas encore disponible !!')
+      //alert('API pas encore disponible !!')
+      this.categorieService.add(this.selectedCategorie).subscribe( data => this.index())
       this.close();
-      //this.categorieService.add(this.selectedCategorie).subscribe( data => this.index())
     }
 
 
   }
-  delete(categorie: Categorie) {
-    alert('API pas encore disponible !!')
+  delete(id: string) {
+    this.categorieService.delete(id).subscribe( data => this.index())
   }
 }

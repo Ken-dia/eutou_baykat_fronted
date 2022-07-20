@@ -16,7 +16,7 @@ export class CategoriesService {
   }
 
   add(categorie: Categorie): Observable<any> {
-    return this.http.post(this.baseUrl, categorie)
+    return this.http.post(this.baseUrl, categorie, {withCredentials: true})
   }
   show(_id: string): Observable<any> {
     return this.http.get<any>(this.baseUrl+'/'+_id);
