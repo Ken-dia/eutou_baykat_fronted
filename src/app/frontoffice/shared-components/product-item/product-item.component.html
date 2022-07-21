@@ -15,9 +15,6 @@
     <div class="btn-container">
       <button
         *ngFor="let quantity of product.quantities"
-        [ngClass]="{
-          'btn-sm-active': product.quantities.indexOf(quantity) === 0
-        }"
         href="#"
         class="btn-sm"
       >

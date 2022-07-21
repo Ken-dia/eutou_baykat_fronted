@@ -7,30 +7,35 @@ import { RegionService } from '../../services/region/region.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   form: any = {
     username: null,
     nom: null,
-    prenom:null,
+    prenom: null,
     telephone: null,
     region: null,
     email: null,
     password: null,
-    password_confirm:null,
-    roles:  ["vendeur","acheteur"]
+    password_confirm: null,
+    roles: ['vendeur', 'acheteur'],
   };
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
   noResult = false;
-  regions? : any;
+  regions?: any;
   selected?: string;
   isLoggedIn = false;
   isLoginFailed = false;
   roles: string[] = [];
-  constructor(private authService: AuthService, private regionService: RegionService, private tokenStorage: TokenStorageService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private regionService: RegionService,
+    private tokenStorage: TokenStorageService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getRegions();
@@ -38,36 +43,47 @@ export class RegisterComponent implements OnInit {
   }
   getRegions() {
     this.regionService.index().subscribe({
-      next: data => {
+      next: (data) => {
         this.regions = data;
       },
-      error: err => {
-        console.log(err)
-      }
-    })
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
   typeaheadNoResults(event: boolean): void {
     this.noResult = event;
   }
   onSubmit(): void {
-
-    const { username, email, password , nom, prenom, region, telephone, roles } = this.form;
-    this.authService.register(username, email, password, nom, prenom,telephone, region, roles).subscribe({
-      next: data => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-        this.login(username, password);
-      },
-      error: err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
-    });
+    const { username, email, password, nom, prenom, region, telephone, roles } =
+      this.form;
+    this.authService
+      .register(
+        username,
+        email,
+        password,
+        nom,
+        prenom,
+        telephone,
+        region,
+        roles
+      )
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.isSuccessful = true;
+          this.isSignUpFailed = false;
+          this.login(username, password);
+        },
+        error: (err) => {
+          this.errorMessage = err.error.message;
+          this.isSignUpFailed = true;
+        },
+      });
   }
   login(username: string, password: string) {
     this.authService.login(username, password).subscribe({
-      next: data => {
+      next: (data) => {
         console.log(data);
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
@@ -76,10 +92,10 @@ export class RegisterComponent implements OnInit {
         this.roles = this.tokenStorage.getUser().roles;
         this.router.navigate(['dashboard/user/profile']);
       },
-      error: err => {
+      error: (err) => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
-      }
+      },
     });
   }
 }

@@ -46,3 +46,8 @@
   justify-content: flex-end;
   gap: 24px;
 }
+
+.social-links a:link,
+.social-links a:visited {
+  color: white;
+}
