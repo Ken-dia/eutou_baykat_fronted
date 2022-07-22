@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TokenStorageService } from '../frontoffice/services/auth/token-storage.service';
+import { AuthService } from '../frontoffice/services/auth/auth.service';
+import { StorageService } from '../frontoffice/services/auth/token-storage.service';
 
 @Component({
   selector: 'app-backoffice',
@@ -72,25 +73,32 @@ export class BackofficeComponent implements OnInit {
       link: '/dashboard/admin/produits'
     } */
   ]
-  constructor(private token: TokenStorageService, private tokenStorageService: TokenStorageService, private router: Router) { }
+  constructor(private storageService: StorageService, private authService: AuthService,private router: Router) { }
 
   ngOnInit(): void {
-    this.currentUser = this.token.getUser();
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-    this.tokenStage = this.token.getToken();
-    console.log(this.tokenStage);
+    this.isLoggedIn = this.storageService.isLoggedIn();
     if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
+      const user = this.storageService.getUser();
       this.roles = user.roles;
-      //console.log(this.roles);
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_ACHETEUR');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
       this.username = user.username;
-      this.showAdminBoard ? this.menus = this.menuAdmin : this.menus = this.menuUser;
+      this.menus = this.showAdminBoard ? this.menuAdmin : this.menuUser;
     }
   }
   logout(): void {
-    this.tokenStorageService.signOut();
-    this.router.navigate(['login']);
+    this.authService.logout().subscribe({
+      next: res => {
+        console.log(res);
+        this.storageService.clean();
+        this.router.navigate(['/login'])
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+
+    //window.location.reload();
   }
+
 }

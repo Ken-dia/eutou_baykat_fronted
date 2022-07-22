@@ -1,6 +1,6 @@
 import { RegionService } from './../../../frontoffice/services/region/region.service';
 import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from '../../../frontoffice/services/auth/token-storage.service';
+import { StorageService } from '../../../frontoffice/services/auth/token-storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +11,7 @@ export class ProfileComponent implements OnInit {
   currentUser: any;
   regions = [];
   edited: Boolean =  false;
-  constructor(private token: TokenStorageService,  private regionService: RegionService) { }
+  constructor(private token: StorageService,  private regionService: RegionService) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();

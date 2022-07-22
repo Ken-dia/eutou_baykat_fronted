@@ -14,6 +14,7 @@ import { StatsAdminComponent } from './components/stats-admin/stats-admin.compon
 import { CreerAnnonceComponent } from './components/creer-annonce/creer-annonce.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ParametreComponent } from './components/parametre/parametre.component';
+import { httpInterceptorProviders } from '../core/_helpers/auth.interceptor';
 
 
 
@@ -37,5 +38,7 @@ import { ParametreComponent } from './components/parametre/parametre.component';
     BackOfficeRoutingModule,
     SharedModule
   ],
+/*   providers: [httpInterceptorProviders],
+ */
 })
 export class BackofficeModule { }

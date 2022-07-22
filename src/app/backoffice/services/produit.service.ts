@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import * as uuid from 'uuid';
 import { FileUpload } from '../models/file-upload.model';
-import { TokenStorageService } from 'src/app/frontoffice/services/auth/token-storage.service';
+import { StorageService } from 'src/app/frontoffice/services/auth/token-storage.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class ProduitService {
   private listImages: FileUpload[] = [];
   constructor(
     private http: HttpClient,
-    private currentUser: TokenStorageService,
+    private currentUser: StorageService,
     private storage: AngularFireStorage) { }
   pushFileToStorage(fileUpload: FileUpload): Observable<number | undefined> {
     //const filePath = `${this.basePath}/${fileUpload.file.name}`;

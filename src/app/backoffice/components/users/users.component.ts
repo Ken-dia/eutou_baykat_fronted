@@ -1,3 +1,4 @@
+import { StorageService } from './../../../frontoffice/services/auth/token-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/frontoffice/services/user/user.service';
@@ -29,25 +30,27 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class UsersComponent implements OnInit {
   content? : any;
+  currentUser: any;
   users = [];
-  displayedColumns: string[] = ['Username','Nom', 'Prenom','Email','Region', 'Status'];
+  displayedColumns: string[] = ['username','nom', 'prenom','email','region', 'enabled'];
   dataSource = new MatTableDataSource(this.users);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private token: StorageService) { }
 
   ngOnInit(): void {
-    this.userService.getAdminBoard().subscribe({
-      next: data => {
-        this.content = data;
-      },
-      error: err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    });
+    this.currentUser = this.token.getUser();
+    this.getUsers();
   }
 
+  getUsers() {
+    this.userService.getUsers(this.currentUser.id).subscribe( data => this.users = data)
+  }
+
+  isActive(user: any) {
+    this.userService.isActive(user._id, {value : !user.enabled}).subscribe( data => this.getUsers());
+  }
 }
