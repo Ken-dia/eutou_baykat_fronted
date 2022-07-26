@@ -42,6 +42,15 @@
       </button>
     </td>
   </ng-container>
+  <!-- View Column -->
+  <ng-container matColumnDef="view">
+    <th mat-header-cell *matHeaderCellDef> Voir plus </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" color="primary" (click)="view(element._id)">
+         <mat-icon> visibility </mat-icon>
+      </button>
+    </td>
+  </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

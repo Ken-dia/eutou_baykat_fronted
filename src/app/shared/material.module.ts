@@ -13,6 +13,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+
 
 
 const MODULES = [
@@ -33,7 +37,9 @@ const MODULES = [
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
-  MatDialogModule
+  MatDialogModule,
+  MatTabsModule,
+  MatTooltipModule
 ];
 @NgModule({
   imports: MODULES,

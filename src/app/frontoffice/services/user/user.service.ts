@@ -17,4 +17,7 @@ export class UserService {
   isActive(id: any, value: any): Observable<any> {
     return this.http.put(API_URL + '/is-active/'+ id, value);
   }
+  show(id: any): Observable<any> {
+    return this.http.get(API_URL+'/show/'+id);
+  }
 }
