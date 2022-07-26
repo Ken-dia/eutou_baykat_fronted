@@ -71,4 +71,9 @@ export class ProduitService {
     const index = this.listImages.findIndex((e: FileUpload)=> e.name === name);
     this.listImages.splice(index, 1);
   }
+
+  userProduits(user: any): Observable<any> {
+    return this.http.get(`${environment.apiUrl}user/produits/${user}`);
+  }
+
 }

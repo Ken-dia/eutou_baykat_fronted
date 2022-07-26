@@ -1,3 +1,5 @@
+import { ProduitDetailComponent } from './components/produit-detail/produit-detail.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { BoardUserComponent } from './components/board-user/board-user.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -33,6 +35,11 @@ const routes: Routes = [
             component: ProfileComponent
           },
           {
+            path: "",
+            redirectTo: "profile",
+            pathMatch: "full"
+          },
+          {
             path: "users",
             component: UsersComponent
           },
@@ -57,10 +64,14 @@ const routes: Routes = [
             component: ParametreComponent
           },
           {
-            path: "",
-            redirectTo: "profile",
-            pathMatch: "full"
+            path: 'user-detail/:id',
+            component: UserDetailComponent
+          },
+          {
+            path: 'produit-detail/:id',
+            component: ProduitDetailComponent
           }
+
         ]
       },
       {
