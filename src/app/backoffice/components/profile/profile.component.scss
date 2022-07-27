@@ -2,7 +2,12 @@
   width: 100px;
 }
 .profil {
-  padding-left: 30px;
+  padding-left: 50px;
+}
+.btn-edited {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 .mat-form-field {
   width: 45%;
@@ -10,4 +15,9 @@
 }
 button.is-login {
   padding: 0px 5px 0px 5px !important;
+}
+
+.jumbotron {
+  background-color: rgb(237, 241, 239);
+  padding: 30px 30px 30px 50px;
 }

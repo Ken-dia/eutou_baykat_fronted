@@ -1,5 +1,5 @@
 <div class="container" *ngIf="!edited else formProfil">
-  <header class="jumbotron">
+  <mat-card class="jumbotron">
     <div class="d-flex">
       <div>
         <img
@@ -27,10 +27,9 @@
       </div>
 
     </div>
-
-  </header>
-    <div class="float-right" *ngIf="!edited; else  formProfil">
-      <button mat-raised-button color="primary" (click)="edited=true">Modifier</button>
+  </mat-card>
+    <div class="btn-edited" *ngIf="!edited; else  formProfil">
+      <button mat-raised-button class="is-login" (click)="edited=true">Modifier</button>
     </div>
 </div>
 <ng-template #loggedOut>
@@ -39,34 +38,36 @@
 <ng-template #formProfil>
   <div class="container jumbotron">
     <h1>Edition de profile</h1>
-    <mat-form-field appearance="outline">
-      <mat-label>Username</mat-label>
-      <input matInput placeholder="Entrer votre nom" [value]="currentUser.username">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput placeholder="Entrer votre nom" [value]="currentUser.email">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Nom</mat-label>
-      <input matInput placeholder="Entrer votre nom" [value]="currentUser.nom">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Prénom</mat-label>
-      <input matInput placeholder="Entrer votre nom" [value]="currentUser.prenom">
-    </mat-form-field>
+    <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Entrer votre nom" formControlName="username">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Entrer votre nom" formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Entrer votre nom" formControlName="nom">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Prénom</mat-label>
+        <input matInput placeholder="Entrer votre nom" formControlName="prenom">
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>téléphone</mat-label>
-      <input matInput placeholder="Entrer votre nom" [value]="currentUser.telephone">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Région</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let region of regions" [value]="currentUser.region">{{region}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-      <button mat-raised-button class="is-login" (click)="edited=false">Enregistrer</button>
+      <mat-form-field appearance="outline">
+        <mat-label>téléphone</mat-label>
+        <input matInput placeholder="Entrer votre nom" formControlName="telephone">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Région</mat-label>
+        <mat-select formControlName="region">
+          <mat-option *ngFor="let region of regions" [value]="region">{{region}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+        <button mat-raised-button class="is-login">Enregistrer</button>
+    </form>
   </div>
 
 </ng-template>

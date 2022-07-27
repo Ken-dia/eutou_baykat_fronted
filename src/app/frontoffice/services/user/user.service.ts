@@ -20,4 +20,8 @@ export class UserService {
   show(id: any): Observable<any> {
     return this.http.get(API_URL+'/show/'+id);
   }
+
+  update(id: any, body: any): Observable<any> {
+    return this.http.put(API_URL + '/' +id, body);
+  }
 }
