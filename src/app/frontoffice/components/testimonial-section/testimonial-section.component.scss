@@ -1,0 +1,18 @@
+.container {
+  padding: 92px 0;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+h4 {
+  text-align: center;
+  text-decoration: underline;
+  text-transform: capitalize;
+  margin-bottom: 64px;
+}
+
+.testimonials-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}

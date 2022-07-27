@@ -1,0 +1,48 @@
+.topbar {
+  font-size: 20px;
+  padding: 12px;
+  background-color: #467806;
+  color: #fff;
+}
+
+.topbar-container {
+  max-width: 1300px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+}
+
+.number:link,
+.number:visited {
+  text-decoration: none;
+}
+
+.phone {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.phone-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.social-links {
+  flex: 1;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+}

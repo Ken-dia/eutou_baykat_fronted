@@ -1,0 +1,22 @@
+<div class="navbar">
+  <div class="navbar-container">
+    <div class="logo">
+      <img src="../../../assets/img/EutouBaykat.png" alt="EutouBaykat logo" />
+    </div>
+    <div class="nav-links">
+      <a *ngFor="let link of navbarLinks" href="#" class="nav-link"
+        >{{ link.name }}
+      </a>
+    </div>
+    <div class="navbar-buttons">
+      <a href="#" class="icon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <a href="#" class="icon">
+        <i class="fa-regular fa-heart"></i>
+      </a>
+      <a mat-raised-button href="/login" >Connexion</a>
+
+    </div>
+  </div>
+</div>

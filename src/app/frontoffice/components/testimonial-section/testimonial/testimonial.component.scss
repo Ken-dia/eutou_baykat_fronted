@@ -1,0 +1,28 @@
+.testimonial-img {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.img-container {
+  width: 200px;
+  height: 200px;
+}
+
+.img-container img {
+  border: 4px solid #467806;
+  border-radius: 50%;
+}
+
+.author {
+  color: #467806;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+}

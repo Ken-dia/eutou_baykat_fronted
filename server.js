@@ -3,10 +3,10 @@ const path = require("path");
 
 const app = express();
 
-app.use(express.static(__dirname + '/dist/eutou-baykat-frontend'));
+app.use(express.static(__dirname + '/dist/eutou_baykat_frontend'));
 
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/eutou-baykat-frontend/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/eutou_baykat_frontend/index.html'));
 });
 
 app.listen(process.env.PORT);
