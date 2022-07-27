@@ -76,4 +76,8 @@ export class ProduitService {
     return this.http.get(`${environment.apiUrl}user/produits/${user}`);
   }
 
+  getAll(): Observable<any> {
+    return this.http.get(this.baseUrl);
+  }
+
 }
