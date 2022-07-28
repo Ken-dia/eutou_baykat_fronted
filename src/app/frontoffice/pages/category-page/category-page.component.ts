@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/frontoffice/services/products/products.service';
 
 @Component({
-  selector: 'app-product-section-latest',
-  templateUrl: './product-section-latest.component.html',
-  styleUrls: ['./product-section-latest.component.scss'],
+  selector: 'app-category-page',
+  templateUrl: './category-page.component.html',
+  styleUrls: ['./category-page.component.scss'],
 })
-export class ProductSectionLatestComponent implements OnInit {
+export class CategoryPageComponent implements OnInit {
   products = [
     {
       img: 'citrons.png',
@@ -143,12 +142,44 @@ export class ProductSectionLatestComponent implements OnInit {
     },
   ];
 
-  constructor(private productsService: ProductsService) {}
+  Allcategories = [
+    [
+      {
+        url: '#',
+        name: 'Légumes',
+      },
+      {
+        url: '#',
+        name: 'Légumes',
+      },
+      {
+        url: '#',
+        name: 'Légumes',
+      },
+      {
+        url: '#',
+        name: 'Légumes',
+      },
+      {
+        url: '#',
+        name: 'Légumes',
+      },
+      {
+        url: '#',
+        name: 'Légumes',
+      },
+      {
+        url: '#',
+        name: 'Légumes',
+      },
+      {
+        url: '#',
+        name: 'Légumes',
+      },
+    ],
+  ];
 
-  ngOnInit(): void {
-    this.productsService.getProducts().subscribe((data) => {
-      this.products = data;
-      console.log(data);
-    });
-  }
+  constructor() {}
+
+  ngOnInit(): void {}
 }

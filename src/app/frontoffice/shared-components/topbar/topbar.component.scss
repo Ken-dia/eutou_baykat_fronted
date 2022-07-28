@@ -6,13 +6,15 @@
 }
 
 .topbar-container {
-  max-width: 1300px;
+  max-width: 80%;
   margin: 0 auto;
-
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  max-width: 1300px;
+
+  // display: flex;
+  // justify-content: space-between;
+  // max-width: 1300px;
 }
 
 .number:link,
@@ -21,11 +23,13 @@
 }
 
 .phone {
-  flex: 1;
-  display: flex;
-  gap: 16px;
-  display: flex;
-  align-items: center;
+  justify-self: start;
+
+  // flex: 1;
+  // display: flex;
+  // gap: 16px;
+  // display: flex;
+  // align-items: center;
 }
 
 .phone-icon {
@@ -34,20 +38,13 @@
 }
 
 .title {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+  justify-self: center;
+  margin-bottom: 0;
 }
 
 .social-links {
-  flex: 1;
+  justify-self: end;
 
   display: flex;
-  justify-content: flex-end;
   gap: 24px;
-}
-
-.social-links a:link,
-.social-links a:visited {
-  color: white;
 }

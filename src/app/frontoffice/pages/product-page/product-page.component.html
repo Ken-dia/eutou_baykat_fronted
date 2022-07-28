@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="product-pictures">
+    <img src="/assets/img/products/citrons.png" alt="" class="main-picture" />
+    <img
+      *ngFor="let image of products.images"
+      src="/assets/img/products/{{ image }}"
+      alt=""
+    />
+  </div>
+  <div class="product-info">
+    <h3>Product name</h3>
+    <div class="locality">
+      <span>origine:</span>
+      <h4>product origin</h4>
+    </div>
+    <div class="price"></div>
+  </div>
+</div>

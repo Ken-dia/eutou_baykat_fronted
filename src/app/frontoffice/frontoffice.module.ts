@@ -16,6 +16,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { sharedComponentsModule } from './shared-components/shared-component.module';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,17 @@ import { sharedComponentsModule } from './shared-components/shared-component.mod
     TestimonialComponent,
     CategoryTableSectionComponent,
 
+    //category-page
+    CategoryPageComponent,
+
     //login page
     LoginComponent,
 
     //Register page
     RegisterComponent,
+
+    //Product page
+    ProductPageComponent,
   ],
   exports: [
     CategorySectionComponent,

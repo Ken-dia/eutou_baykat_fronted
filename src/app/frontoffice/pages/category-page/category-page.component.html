@@ -1,0 +1,20 @@
+<div class="container">
+  <app-breadcrumb></app-breadcrumb>
+  <section class="product-section">
+    <div>
+      <!-- <app-category-table-item></app-category-table-item> -->
+      <div *ngFor="let categories of Allcategories; let i = index">
+        <app-category-table-item
+          *ngFor="let category of categories"
+          [item]="category"
+        ></app-category-table-item>
+      </div>
+    </div>
+    <div class="products-container">
+      <app-product-item
+        *ngFor="let product of products"
+        [product]="product"
+      ></app-product-item>
+    </div>
+  </section>
+</div>

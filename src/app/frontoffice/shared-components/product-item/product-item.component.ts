@@ -6,13 +6,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./product-item.component.scss'],
 })
 export class ProductItemComponent implements OnInit {
-  @Input()
-  product!: {
-    img: string;
-    name: string;
-    locality: string;
-    quantities: { price: number; interval: string }[];
-  };
+  // @Input()
+  // product!: {
+  //   img: string;
+  //   name: string;
+  //   locality: string;
+  //   quantities: { price: number; interval: string }[];
+  // };
+
+  @Input() product: any;
 
   constructor() {}
 
