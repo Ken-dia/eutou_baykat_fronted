@@ -17,6 +17,9 @@ import { ParametreComponent } from './components/parametre/parametre.component';
 import { httpInterceptorProviders } from '../core/_helpers/auth.interceptor';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { ProduitDetailComponent } from './components/produit-detail/produit-detail.component';
+import { GererAnnoncesComponent } from './components/gerer-annonces/gerer-annonces.component';
+import { FavorisComponent } from './components/favoris/favoris.component';
+import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
 
 
 
@@ -35,7 +38,10 @@ import { ProduitDetailComponent } from './components/produit-detail/produit-deta
     ConfirmDialogComponent,
     ParametreComponent,
     UserDetailComponent,
-    ProduitDetailComponent
+    ProduitDetailComponent,
+    GererAnnoncesComponent,
+    FavorisComponent,
+    DashboardUserComponent
   ],
   imports: [
     CommonModule,
