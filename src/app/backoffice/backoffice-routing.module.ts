@@ -13,6 +13,9 @@ import { CategorieComponent } from './components/categorie/categorie.component';
 import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
 import { CreerAnnonceComponent } from './components/creer-annonce/creer-annonce.component';
 import { ParametreComponent } from './components/parametre/parametre.component';
+import { GererAnnoncesComponent } from './components/gerer-annonces/gerer-annonces.component';
+import { FavorisComponent } from './components/favoris/favoris.component';
+import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
 
 const routes: Routes = [
   { path: '', component: BackofficeComponent,
@@ -91,11 +94,11 @@ const routes: Routes = [
           },
           {
             path: "mes-annonces",
-            component: ProfileComponent
+            component: GererAnnoncesComponent
           },
           {
             path: "favoris",
-            component: ProfileComponent
+            component: FavorisComponent
           },
           {
             path: 'parametre',
@@ -103,7 +106,7 @@ const routes: Routes = [
           },
           {
             path: "stats",
-            component: ProfileComponent
+            component: DashboardUserComponent
           },
           {
             path: "",
