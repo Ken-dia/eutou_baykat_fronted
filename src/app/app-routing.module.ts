@@ -13,11 +13,11 @@ const routes: Routes = [
     path: "dashboard",
     loadChildren: () => import('./backoffice/backoffice.module').then( mod => mod.BackofficeModule)
   },
-  {
+  /* {
     path: "",
     redirectTo: "",
     pathMatch: "full"
-  },
+  }, */
   {
     path: "**",
     component: NotFoundComponent

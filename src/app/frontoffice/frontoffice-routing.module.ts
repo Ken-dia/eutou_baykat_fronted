@@ -1,31 +1,36 @@
-import { HomePageComponent } from './components/home-page/home-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BackofficeComponent } from '../backoffice/backoffice.component';
-import { ProfileComponent } from '../backoffice/components/profile/profile.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { FrontofficeComponent } from './frontoffice.component';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
 
 const routes: Routes = [
-  { path: '', component: FrontofficeComponent,
+  {
+    path: '',
+    component: FrontofficeComponent,
     children: [
       {
-        path: "",
-        redirectTo: "home",
-        pathMatch: "full"
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
       },
       { path: 'home', component: HomePageComponent },
-    ]
+      { path: 'category/:categoryID', component: CategoryPageComponent },
+      { path: 'product/:productID', component: ProductPageComponent },
 
+    ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+
 
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class FrontOfficeRoutingModule { }
+export class FrontOfficeRoutingModule {}
