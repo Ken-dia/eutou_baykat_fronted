@@ -7,20 +7,19 @@ import { AppComponent } from './app.component';
 import { httpInterceptorProviders } from './core/_helpers/auth.interceptor';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { sharedComponentsModule } from './frontoffice/shared-components/shared-component.module';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     CoreModule,
-    BackofficeModule
+    BackofficeModule,
+    sharedComponentsModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

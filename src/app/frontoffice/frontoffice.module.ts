@@ -1,25 +1,29 @@
 import { FrontOfficeRoutingModule } from './frontoffice-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { CategorySectionComponent } from './components/category-section/category-section.component';
-import { CategorySectionItemComponent } from './components/category-section-item/category-section-item.component';
-import { ProductSectionLatestComponent } from './components/product-section-latest/product-section-latest.component';
-import { ProductSectionLocalityComponent } from './components/product-section-locality/product-section-locality.component';
-import { TestimonialSectionComponent } from './components/testimonial-section/testimonial-section.component';
-import { TestimonialComponent } from './components/testimonial-section/testimonial/testimonial.component';
-import { CategoryTableSectionComponent } from './components/category-table-section/category-table-section.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { CategorySectionComponent } from './pages/home-page/category-section/category-section.component';
+import { CategorySectionItemComponent } from './pages/home-page/category-section/category-section-item/category-section-item.component';
+import { ProductSectionLatestComponent } from './pages/home-page/product-section-latest/product-section-latest.component';
+import { ProductSectionLocalityComponent } from './pages/home-page/product-section-locality/product-section-locality.component';
+import { TestimonialSectionComponent } from './pages/home-page/testimonial-section/testimonial-section.component';
+import { TestimonialComponent } from './pages/home-page/testimonial-section/testimonial/testimonial.component';
+import { CategoryTableSectionComponent } from './pages/home-page/category-table-section/category-table-section.component';
 import { FrontofficeComponent } from './frontoffice.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
-import { SharedModule } from '../shared/shared.module';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+// import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-
+import { sharedComponentsModule } from './shared-components/shared-component.module';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
 
 @NgModule({
   declarations: [
     FrontofficeComponent,
+
+    //Home page
     HomePageComponent,
     CategorySectionComponent,
     CategorySectionItemComponent,
@@ -28,8 +32,18 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     TestimonialSectionComponent,
     TestimonialComponent,
     CategoryTableSectionComponent,
-    RegisterComponent,
+
+    //category-page
+    CategoryPageComponent,
+
+    //login page
     LoginComponent,
+
+    //Register page
+    RegisterComponent,
+
+    //Product page
+    ProductPageComponent,
   ],
   exports: [
     CategorySectionComponent,
@@ -40,10 +54,10 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
   ],
   imports: [
     CommonModule,
-    SharedModule,
+    sharedComponentsModule,
     FormsModule,
     TypeaheadModule.forRoot(),
-    FrontOfficeRoutingModule
-  ]
+    FrontOfficeRoutingModule,
+  ],
 })
-export class FrontofficeModule { }
+export class FrontofficeModule {}

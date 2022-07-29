@@ -16,6 +16,7 @@ import {
   ValidatorFn,
   FormArray
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-creer-annonce',
@@ -37,7 +38,8 @@ export class CreerAnnonceComponent implements OnInit {
     private produitService: ProduitService,
     private categorieService: CategoriesService,
     private uniteService: UniteService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -117,6 +119,7 @@ export class CreerAnnonceComponent implements OnInit {
   }
   saveProduct(){
     const data = this.produitService.saveProduit(this.saveForm.value).subscribe( data => {
+      this.router.navigate(['dashboard/user/mes-annonces']);
       console.log(data);
     },
         error => console.log(error));
