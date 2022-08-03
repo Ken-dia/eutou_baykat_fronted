@@ -109,6 +109,10 @@ const routes: Routes = [
             component: DashboardUserComponent
           },
           {
+            path: 'produit-detail/:id',
+            component: ProduitDetailComponent
+          },
+          {
             path: "",
             redirectTo: "profile",
             pathMatch: "full"
