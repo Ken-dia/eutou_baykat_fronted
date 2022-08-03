@@ -1,8 +1,8 @@
 <div class="row" *ngIf="produit else loading">
-  <div class="col-6">
+  <div class="col-md-6">
     images
   </div>
-  <div class="col-6">
+  <div class="col-md-6">
     <mat-card>
       <mat-card-title>Produit {{ produit.status ? 'Validé': 'en attende' }}</mat-card-title>
       <hr>
@@ -31,7 +31,7 @@
           </div>
           <div class="row mt-3">
             <div class="col-6"><strong>Title:</strong></div>
-            <div class="col-6">{{produit.libelle}}</div>
+            <div class="col-6">{{ produit.libelle }}</div>
           </div>
           <div class="row mt-3">
             <div class="col-6"><strong>Quantité:</strong></div>
@@ -49,15 +49,31 @@
               class="example-box"
               cdkDrag
               *ngFor="let categorie of produit.categories">
-              {{categorie.libelle}}
+              {{ categorie.libelle }}
             </mat-chip>
           </mat-chip-list>
             </div>
           </div>
-          <div class="row mt-3">
-            <div class="col-6"><strong>Description:</strong></div>
-            <div class="col-6">{{ produit.description }}</div>
+          <hr>
+          <div class="">
+            <!-- <div class="text-center mt-3 ">Detaillant</div> -->
+            <div class="row justify-space-between">
+              <div class="col"><strong>Prix</strong></div>
+              <div class="col"><strong>Quantité min</strong></div>
+              <div class="col"><strong>Quantité max</strong></div>
+            </div>
+            <div *ngFor="let detail of produit.prixes">
+              <div class="row justify-space-between">
+                <div class="col mt-2">{{ detail.valeur }}</div>
+                <div class="col mt-2">{{ detail.debut }} {{ detail.unite.libelle }}</div>
+                <div class="col mt-2">{{ detail.fin }} {{ detail.unite.libelle }}</div>
+              </div>
+            </div>
           </div>
+          <!-- <div class="">
+            <span><strong>Description:</strong></span>
+            <div>{{ produit.description }}</div>
+          </div> -->
 
         </div>
       </mat-card-content>
