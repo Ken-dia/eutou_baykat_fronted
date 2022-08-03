@@ -1,1 +1,103 @@
-<p>produit-detail works!</p>
+<div class="row" *ngIf="produit else loading">
+  <div class="col-md-6">
+     <ngx-gallery *ngIf="galleryImages" [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+    <div>
+      <span><strong>Ajouté le: </strong></span>
+      <span>{{produit.createdAt.substring(0,10)}}</span>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <mat-card>
+      <mat-card-title>Produit {{ produit.status ? 'Validé': 'en attende' }}</mat-card-title>
+      <hr>
+      <mat-card-content>
+        <div class="profile-user">
+          <img
+            class="avatar-img rounded-circle"
+            id="profile-img"
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          />
+          <span class="name-user">
+            <strong>{{ produit.user.prenom }} {{ produit.user.nom }}</strong>
+          </span>
+          <span class="mx-2">
+            <mat-icon class="compte-verified">verified_user</mat-icon>Compte Vérifié
+          </span>
+        </div>
+        <div class="info">
+          <div class="row">
+            <div class="col-6"><strong>Région:</strong></div>
+            <div class="col-6">{{ produit.user.region }}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6"><strong>Téléphone:</strong></div>
+            <div class="col-6">{{ produit.user.telephone }}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6"><strong>Title:</strong></div>
+            <div class="col-6">{{ produit.libelle }}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6"><strong>Quantité:</strong></div>
+            <div class="col-6">{{ produit.quantite }}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6"><strong>Categories:</strong></div>
+            <div class="col-6">
+              <mat-chip-list
+                class="example-chip"
+                cdkDropList
+                cdkDropListOrientation="horizontal"
+              >
+            <mat-chip
+              class="example-box"
+              cdkDrag
+              *ngFor="let categorie of produit.categories">
+              {{ categorie.libelle }}
+            </mat-chip>
+          </mat-chip-list>
+            </div>
+          </div>
+          <hr>
+          <div class="">
+            <!-- <div class="text-center mt-3 ">Detaillant</div> -->
+            <div class="row justify-space-between">
+              <div class="col"><strong>Prix</strong></div>
+              <div class="col"><strong>Quantité min</strong></div>
+              <div class="col"><strong>Quantité max</strong></div>
+            </div>
+            <div *ngFor="let detail of produit.prixes">
+              <div class="row justify-space-between">
+                <div class="col mt-2">{{ detail.valeur }}</div>
+                <div class="col mt-2">{{ detail.debut }} {{ detail.unite.libelle }}</div>
+                <div class="col mt-2">{{ detail.fin }} {{ detail.unite.libelle }}</div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="description">
+            <p>
+              <strong class="mr-2">Description:</strong>
+              {{ produit.description }}
+            </p>
+            <!-- <span><strong>Description:</strong></span>
+            <div>{{ produit.description }}</div> -->
+          </div>
+          <div *ngIf="isAdmin" class="btn-actions">
+            <div>
+              <button mat-raised-button class="success" (click)="valider(produit._id)" [disabled]="produit.status">Valider</button>
+            </div>
+            <div>
+              <button mat-raised-button class="danger" (click)="rejeter(produit._id)" [disabled]="!produit.status">Rejeter</button>
+            </div>
+          </div>
+          </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="text-center">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+</ng-template>

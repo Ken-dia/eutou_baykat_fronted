@@ -9,7 +9,6 @@ import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { sharedComponentsModule } from './frontoffice/shared-components/shared-component.module';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [

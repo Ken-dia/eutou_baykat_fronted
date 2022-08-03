@@ -80,4 +80,17 @@ export class ProduitService {
     return this.http.get(this.baseUrl);
   }
 
+  findById(id: any): Observable<any> {
+    return this.http.get(this.baseUrl+'/'+id);
+  }
+  actived(id: any): Observable<any> {
+    return this.http.get(this.baseUrl+'/actived/'+id);
+  }
+  disabled(id: any): Observable<any> {
+    return this.http.get(this.baseUrl+'/disabled/'+id);
+  }
+  deleteOne(id: any) {
+    return this.http.delete(this.baseUrl+'/'+id);
+  }
+
 }
