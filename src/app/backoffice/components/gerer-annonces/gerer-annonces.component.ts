@@ -29,4 +29,13 @@ export class GererAnnoncesComponent implements OnInit {
   view(id: any) {
     this.router.navigate(['dashboard/user/produit-detail', id]);
   }
+  delete(id: any) {
+    this.produitService.deleteOne(id).subscribe(data => this.index());
+  }
+  disabled(id: any) {
+    this.produitService.disabled(id).subscribe(data => {
+      this.index();
+    })
+  }
+
 }

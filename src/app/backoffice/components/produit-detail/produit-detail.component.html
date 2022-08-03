@@ -1,6 +1,10 @@
 <div class="row" *ngIf="produit else loading">
   <div class="col-md-6">
-    images
+     <ngx-gallery *ngIf="galleryImages" [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+    <div>
+      <span><strong>Ajouté le: </strong></span>
+      <span>{{produit.createdAt.substring(0,10)}}</span>
+    </div>
   </div>
   <div class="col-md-6">
     <mat-card>
@@ -70,12 +74,24 @@
               </div>
             </div>
           </div>
-          <!-- <div class="">
-            <span><strong>Description:</strong></span>
-            <div>{{ produit.description }}</div>
-          </div> -->
-
-        </div>
+          <hr>
+          <div class="description">
+            <p>
+              <strong class="mr-2">Description:</strong>
+              {{ produit.description }}
+            </p>
+            <!-- <span><strong>Description:</strong></span>
+            <div>{{ produit.description }}</div> -->
+          </div>
+          <div *ngIf="isAdmin" class="btn-actions">
+            <div>
+              <button mat-raised-button class="success" (click)="valider(produit._id)" [disabled]="produit.status">Valider</button>
+            </div>
+            <div>
+              <button mat-raised-button class="danger" (click)="rejeter(produit._id)" [disabled]="!produit.status">Rejeter</button>
+            </div>
+          </div>
+          </div>
       </mat-card-content>
     </mat-card>
   </div>

@@ -58,13 +58,13 @@
           <mat-icon>edit</mat-icon>
           <span>Modifier</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="disabled(element._id)">
           <mat-icon>
             disabled_by_default
           </mat-icon>
           <span>Desactiver</span>
         </button>
-        <button mat-menu-item color="warn">
+        <button mat-menu-item color="warn" (click)="delete(element._id)">
           <mat-icon>delete</mat-icon>
           <span>Supprimer</span>
         </button>

@@ -17,9 +17,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
-
-
 const MODULES = [
   MatButtonModule,
   MatChipsModule,
@@ -42,6 +39,7 @@ const MODULES = [
   MatTabsModule,
   MatTooltipModule,
   MatProgressSpinnerModule,
+
 ];
 @NgModule({
   imports: MODULES,
