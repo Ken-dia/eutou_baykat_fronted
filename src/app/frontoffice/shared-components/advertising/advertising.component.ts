@@ -11,6 +11,6 @@ export class AdvertisingComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.advertising);
+    // console.log(this.advertising);
   }
 }

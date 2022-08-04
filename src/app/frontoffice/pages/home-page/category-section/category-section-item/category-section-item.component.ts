@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CategorySectionItemComponent implements OnInit {
   @Input()
-  categoryItem!: { img: string; name: string; url: string };
+  categoryItem: any;
 
   constructor() {}
 

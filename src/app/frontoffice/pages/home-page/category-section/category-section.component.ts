@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-category-section',
@@ -6,28 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-section.component.scss'],
 })
 export class CategorySectionComponent implements OnInit {
-  categoryItems = [
-    {
-      img: 'fruit.png',
-      name: 'fruit',
-      url: '#',
-    },
-    {
-      img: 'fruit.png',
-      name: 'fruit',
-      url: '#',
-    },
-    {
-      img: 'fruit.png',
-      name: 'fruit',
-      url: '#',
-    },
-    {
-      img: 'fruit.png',
-      name: 'fruit',
-      url: '#',
-    },
-  ];
+  @Input() categoryItems = [];
 
   constructor() {}
 

@@ -1,0 +1,9 @@
+<div class="btns-container">
+  <button
+    *ngFor="let category of categories"
+    class="btn-md btn-md-active"
+    (click)="onFilter(category)"
+  >
+    {{ category }}
+  </button>
+</div>

@@ -1,5 +1,9 @@
 <div class="container">
-  <h2>Les plus récents</h2>
+  <h2>{{ title }}</h2>
+  <app-filter-btns
+    (filterEvent)="onFilterClicked($event)"
+    [categories]="categories"
+  ></app-filter-btns>
   <div class="products-container">
     <app-product-item
       *ngFor="let product of products"
