@@ -124,18 +124,18 @@
         </div>
         <div class="row d-flex justify-content-between">
           <div class="col  mt-4">
-            <button mat-stroked-button class="btn-outline-secondary" (click)="addPrice()">
+            <button mat-stroked-button color="primary" (click)="addPrice()">
               Ajouter prix
             </button>
           </div>
           <div class="col  mt-4">
-            <button mat-stroked-button class="btn-danger" (click)="addPrice()">
+            <button mat-stroked-button color="warn"(click)="addPrice()">
               Annuler
             </button>
           </div>
           <div class="col  mt-4">
             <button type="submit" mat-stroked-button class="btn-success" [disabled]="!saveForm.valid">
-              Enregistrer
+              <mat-spinner *ngIf="loading else saveText" diameter="20"></mat-spinner>
             </button>
           </div>
         </div>
@@ -149,3 +149,6 @@
     </div>
   </form>
 </div>
+<ng-template #saveText>
+  Enregistrer
+</ng-template>

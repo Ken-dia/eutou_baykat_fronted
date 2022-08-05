@@ -33,6 +33,7 @@ export class CreerAnnonceComponent implements OnInit {
   tmpImages!: FileUpload[];
   categories: Categorie[] = [];
   unites: Unite[] = [];
+  loading: Boolean = false;
   constructor(
     private fb: FormBuilder,
     private produitService: ProduitService,
@@ -118,11 +119,17 @@ export class CreerAnnonceComponent implements OnInit {
     });
   }
   saveProduct(){
+    this.loading = true;
     const data = this.produitService.saveProduit(this.saveForm.value).subscribe( data => {
+      this.loading = false;
+      alert('Votre produit a été créé');
       this.router.navigate(['dashboard/user/mes-annonces']);
-      console.log(data);
+
     },
-        error => console.log(error));
+    error => {
+      this.loading = false;
+      alert('Erreur !!')
+    });
   }
 
   public get priceList(): FormArray {
