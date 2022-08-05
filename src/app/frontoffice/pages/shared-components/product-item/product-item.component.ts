@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ProductModel } from 'src/app/frontoffice/models/product.model';
 
 @Component({
   selector: 'app-product-item',
@@ -6,20 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./product-item.component.scss'],
 })
 export class ProductItemComponent implements OnInit {
-  // @Input()
-  // product!: {
-  //   img: string;
-  //   name: string;
-  //   locality: string;
-  //   quantities: { price: number; interval: string }[];
-  // };
   img?: string;
-  @Input() product: any;
+  @Input() product!: ProductModel;
 
   constructor() {}
 
-  ngOnInit(): void {
-    /* this.img = this.product.images[0].url;
-    console.log(this.img); */
-  }
+  ngOnInit(): void {}
 }

@@ -2,8 +2,8 @@
   <button
     *ngFor="let category of categories"
     class="btn-md btn-md-active"
-    (click)="onFilter(category)"
+    (click)="onFilter(category.libelle)"
   >
-    {{ category }}
+    {{ category.libelle }}
   </button>
 </div>

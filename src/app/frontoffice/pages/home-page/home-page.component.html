@@ -1,16 +1,24 @@
 <app-hero></app-hero>
-<app-category-section [categoryItems]="categories"></app-category-section>
+<app-category-table-section
+  [categories]="categories"
+></app-category-table-section>
+
 <app-product-section
   title="titleTest"
   [products]="products"
   [categories]="categories"
 ></app-product-section>
+
 <app-advertising [advertising]="advertising1"></app-advertising>
 <app-product-section
   title="titleTest"
   [products]="products"
   [categories]="categories"
 ></app-product-section>
+
+<app-category-table-section
+  [categories]="categories"
+></app-category-table-section>
+
 <app-testimonial-section></app-testimonial-section>
-<app-category-table-section></app-category-table-section>
 <app-advertising [advertising]="advertising2"></app-advertising>

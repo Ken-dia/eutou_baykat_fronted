@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { categoryModel } from 'src/app/frontoffice/models/category.model';
 
 @Component({
   selector: 'app-category-table-item',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./category-table-item.component.scss'],
 })
 export class CategoryTableItemComponent implements OnInit {
-  @Input() item!: { url: string; name: string };
+  @Input() category!: categoryModel;
 
   constructor() {}
 

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { categoryModel } from '../../models/category.model';
+import { ProductModel } from '../../models/product.model';
+import { CategoriesService } from '../../services/categories/categories.service';
+import { ProductsService } from '../../services/products/products.service';
 
 @Component({
   selector: 'app-category-page',
@@ -6,180 +11,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-page.component.scss'],
 })
 export class CategoryPageComponent implements OnInit {
-  products = [
-    {
-      img: 'citrons.png',
-      name: 'Citrons frais',
-      locality: 'de la vallée du fleuve',
-      quantities: [
-        {
-          price: 525,
-          interval: '100kg - 200kg',
-        },
-        {
-          price: 525,
-          interval: '200kg - 500kg',
-        },
-        {
-          price: 525,
-          interval: '500kg - 1000kg',
-        },
-      ],
-    },
-    {
-      img: 'citrons.png',
-      name: 'Citrons frais',
-      locality: 'de la vallée du fleuve',
-      quantities: [
-        {
-          price: 525,
-          interval: '100kg - 200kg',
-        },
-        {
-          price: 525,
-          interval: '200kg - 500kg',
-        },
-        {
-          price: 525,
-          interval: '500kg - 1000kg',
-        },
-      ],
-    },
-    {
-      img: 'citrons.png',
-      name: 'Citrons frais',
-      locality: 'de la vallée du fleuve',
-      quantities: [
-        {
-          price: 525,
-          interval: '100kg - 200kg',
-        },
-        {
-          price: 525,
-          interval: '200kg - 500kg',
-        },
-        {
-          price: 525,
-          interval: '500kg - 1000kg',
-        },
-      ],
-    },
-    {
-      img: 'citrons.png',
-      name: 'Citrons frais',
-      locality: 'de la vallée du fleuve',
-      quantities: [
-        {
-          price: 525,
-          interval: '100kg - 200kg',
-        },
-        {
-          price: 525,
-          interval: '200kg - 500kg',
-        },
-        {
-          price: 525,
-          interval: '500kg - 1000kg',
-        },
-      ],
-    },
-    {
-      img: 'citrons.png',
-      name: 'Citrons frais',
-      locality: 'de la vallée du fleuve',
-      quantities: [
-        {
-          price: 525,
-          interval: '100kg - 200kg',
-        },
-        {
-          price: 525,
-          interval: '200kg - 500kg',
-        },
-        {
-          price: 525,
-          interval: '500kg - 1000kg',
-        },
-      ],
-    },
-    {
-      img: 'citrons.png',
-      name: 'Citrons frais',
-      locality: 'de la vallée du fleuve',
-      quantities: [
-        {
-          price: 525,
-          interval: '100kg - 200kg',
-        },
-        {
-          price: 525,
-          interval: '200kg - 500kg',
-        },
-        {
-          price: 525,
-          interval: '500kg - 1000kg',
-        },
-      ],
-    },
-    {
-      img: 'citrons.png',
-      name: 'Citrons frais',
-      locality: 'de la vallée du fleuve',
-      quantities: [
-        {
-          price: 525,
-          interval: '100kg - 200kg',
-        },
-        {
-          price: 525,
-          interval: '200kg - 500kg',
-        },
-        {
-          price: 525,
-          interval: '500kg - 1000kg',
-        },
-      ],
-    },
-  ];
+  products!: ProductModel[];
+  Allcategories!: categoryModel[];
 
-  Allcategories = [
-    [
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-    ],
-  ];
+  constructor(
+    private productservice: ProductsService,
+    private categoriesService: CategoriesService,
+    private route: ActivatedRoute
+  ) {}
 
-  constructor() {}
+  ngOnInit(): void {
+    this.categoriesService
+      .getCategories()
+      .subscribe((data: categoryModel[]) => {
+        this.Allcategories = data;
+        console.log(this.Allcategories);
+      });
 
-  ngOnInit(): void {}
+    this.route.params.subscribe((params) => {
+      console.log(params['id']);
+      this.categoryFilter(params['id']);
+    });
+  }
+
+  categoryFilter(categoryID: string) {
+    this.productservice.getProducts().subscribe((data: ProductModel[]) => {
+      this.products = data;
+      console.log(this.products);
+      let categoryProducts: ProductModel[] = [];
+      this.products.forEach((product) => {
+        product.categories.forEach((category) => {
+          if (categoryID === category._id) {
+            categoryProducts.push(product);
+          }
+        });
+        this.products = categoryProducts;
+      });
+    });
+  }
 }

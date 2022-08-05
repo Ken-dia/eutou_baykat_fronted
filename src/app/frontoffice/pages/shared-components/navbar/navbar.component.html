@@ -5,7 +5,7 @@
     </div>
     <div class="nav-links">
       <!-- <a class="nav-link" [ngStyle]="{backgroundColor: 'red'}" [routerLink]="['/home']">Acceuil</a> -->
-      <a class="nav-link">Acceuil</a>
+      <a class="nav-link" routerLink="/home">Acceuil</a>
       <a class="nav-link" routerLink="/home" fragment="categories"
         >Categrories</a
       >
@@ -16,7 +16,7 @@
       <a href="#" class="icon">
         <i class="fa-solid fa-magnifying-glass"></i>
       </a>
-      <a href="#" class="icon">
+      <a routerLink="/favoris" class="icon">
         <i class="fa-regular fa-heart"></i>
       </a>
       <a class="login" (click)="login()">Connexion</a>

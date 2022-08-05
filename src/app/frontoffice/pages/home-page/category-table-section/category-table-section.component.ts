@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { categoryModel } from 'src/app/frontoffice/models/category.model';
 
 @Component({
   selector: 'app-category-table-section',
@@ -6,111 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-table-section.component.scss'],
 })
 export class CategoryTableSectionComponent implements OnInit {
-  Allcategories = [
-    [
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-    ],
-    [
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-    ],
-    [
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-      {
-        url: '#',
-        name: 'Légumes',
-      },
-    ],
-  ];
-
+  @Input() categories!: categoryModel[];
   constructor() {}
 
   ngOnInit(): void {}

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { categoryModel } from 'src/app/frontoffice/models/category.model';
+import { ProductModel } from 'src/app/frontoffice/models/product.model';
 
 @Component({
   selector: 'app-product-section',
@@ -7,13 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductSectionComponent implements OnInit {
   @Input() title!: string;
-  @Input() products = [];
-  @Input() categories!: string[];
+  @Input() products!: ProductModel[];
+  @Input() categories!: categoryModel[];
   constructor() {}
 
   ngOnInit(): void {}
-
-  onFilterClicked(categoryName: string) {
-    console.log(categoryName);
-  }
 }

@@ -1,2 +1,47 @@
-.product-pictures {
+.mat-progress-spinner {
+  display: inline;
+}
+
+.avatar-img {
+  display: inline;
+  margin-right: 10px;
+  width: 40px !important;
+}
+mat-icon.compte-verified {
+  color: green;
+  font-size: small;
+}
+.profile-user {
+  margin-bottom: 20px;
+}
+.example-box.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-chip .cdk-drop-list-dragging {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.mat-chip-list-wrapper input.mat-input-element,
+.mat-chip-list-wrapper .mat-standard-chip {
+  margin: 0px !important;
+}
+.mat-standard-chip {
+  min-height: 23px;
+}
+ngx-gallery {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+button {
+  font-size: 14;
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.success {
+  background-color: green;
+}
+.danger {
+  background-color: red;
 }
