@@ -1,0 +1,24 @@
+<div class="product">
+  <div class="img-container">
+    <a [routerLink]="['/product', product._id]">
+      <img src="{{ product.images[0].url }}" alt="image-product" />
+    </a>
+    <button class="favourite-icon">
+      <i class="fa-regular fa-heart"></i>
+    </button>
+  </div>
+  <div class="product-locality-details">
+    <p class="name">{{ product.libelle }}</p>
+    <p class="locality">{{ product.libelle }}</p>
+  </div>
+  <div class="product-price-details">
+    <div class="btn-container">
+      <a [routerLink]="['/product', product._id]" class="btn-md">
+        {{ product.quantite }} fcfa
+      </a>
+    </div>
+    <p class="price">
+      {{ product.prixes[0].valeur }} {{ product.prixes[0].unite.libelle }}
+    </p>
+  </div>
+</div>

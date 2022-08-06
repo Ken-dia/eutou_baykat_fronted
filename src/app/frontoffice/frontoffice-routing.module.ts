@@ -6,6 +6,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { FrontofficeComponent } from './frontoffice.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { NotFoundComponent } from '../core/components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -18,15 +19,13 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       { path: 'home', component: HomePageComponent },
-      { path: 'category/:categoryID', component: CategoryPageComponent },
-      { path: 'product/:productID', component: ProductPageComponent },
-
+      { path: 'about', component: NotFoundComponent },
+      { path: 'category/:id', component: CategoryPageComponent },
+      { path: 'product/:id', component: ProductPageComponent },
     ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-
-
 ];
 
 @NgModule({
