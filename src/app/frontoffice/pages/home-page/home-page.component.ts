@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { categoryModel } from '../../models/category.model';
+import { ProductModel } from '../../models/product.model';
+import { CategoriesService } from '../../services/categories/categories.service';
+import { ProductsService } from '../../services/products/products.service';
 
 @Component({
   selector: 'app-home-page',
@@ -18,7 +22,45 @@ export class HomePageComponent implements OnInit {
     url: '#',
     buttonText: 'Boutique',
   };
-  constructor() {}
 
-  ngOnInit(): void {}
+  products: ProductModel[] = [];
+  categories: categoryModel[] = [];
+  categoryChange: string = '';
+  constructor(
+    private productService: ProductsService,
+    private categoriesService: CategoriesService
+  ) {
+    // this.productService.filterEvent.subscribe((data: string) => {
+    //   this.categoryChange = data;
+    // });
+  }
+
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe((data: ProductModel[]) => {
+      this.products = data;
+      console.log(this.products);
+    });
+
+    this.categoriesService
+      .getCategories()
+      .subscribe((data: categoryModel[]) => {
+        this.categories = data;
+        console.log(this.categories);
+        // console.log(`categories: ${this.categories}`);
+      });
+
+    this.categoryFilter(this.categoryChange);
+  }
+
+  categoryFilter(categoryLibelle: string) {
+    let categoryProducts: ProductModel[] = [];
+    this.products.forEach((product) => {
+      product.categories.forEach((category) => {
+        if (category.libelle === categoryLibelle) {
+          categoryProducts.push(product);
+        }
+      });
+      this.products = categoryProducts;
+    });
+  }
 }

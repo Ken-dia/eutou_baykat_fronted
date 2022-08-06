@@ -1,17 +1,22 @@
+import { environment } from './../../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { EventEmitter, Injectable, Output } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { ProductModel } from '../../models/product.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private productUrl = 'http://localhost:8080/api/produits';
+  private productUrl = `${environment.apiUrl}produits`;
 
   constructor(private http: HttpClient) {}
 
   getProducts() {
-    return this.http.get<any>(this.productUrl);
+    return this.http.get<ProductModel[]>(this.productUrl);
+  }
+
+  getProductByid(id: string) {
+    return this.http.get<ProductModel>(`${this.productUrl}/${id}`);
   }
 }
