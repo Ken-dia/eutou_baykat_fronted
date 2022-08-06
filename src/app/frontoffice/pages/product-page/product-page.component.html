@@ -24,7 +24,7 @@
               src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             />
             <span class="name-user">
-              <strong>{{ "prenom" }} {{ "nom" }}</strong>
+              <strong>{{ product.user.prenom }} {{product.user.nom }}</strong>
             </span>
             <span class="mx-2">
               <mat-icon class="compte-verified">verified_user</mat-icon>Compte
@@ -34,11 +34,11 @@
           <div class="info">
             <div class="row">
               <div class="col-6"><strong>Région:</strong></div>
-              <div class="col-6">{{ "region" }}</div>
+              <div class="col-6">{{ product.user.region }}</div>
             </div>
             <div class="row mt-3">
               <div class="col-6"><strong>Téléphone:</strong></div>
-              <div class="col-6">{{ "telephone" }}</div>
+              <div class="col-6">{{ product.user.telephone }}</div>
             </div>
             <div class="row mt-3">
               <div class="col-6"><strong>Title:</strong></div>

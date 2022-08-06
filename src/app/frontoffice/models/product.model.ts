@@ -3,7 +3,7 @@ export class ProductModel {
     public _id: string,
     public libelle: string,
     public description: string,
-    public user: { _id: string; nom: string; premon: string },
+    public user: { _id: string; nom: string; prenom: string , region: string, telephone: string },
     public images: [
       {
         _id: string;

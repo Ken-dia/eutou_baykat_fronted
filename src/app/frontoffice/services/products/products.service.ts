@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
@@ -7,7 +8,7 @@ import { ProductModel } from '../../models/product.model';
   providedIn: 'root',
 })
 export class ProductsService {
-  private productUrl = 'http://localhost:8044/api/produits';
+  private productUrl = `${environment.apiUrl}produits`;
 
   constructor(private http: HttpClient) {}
 

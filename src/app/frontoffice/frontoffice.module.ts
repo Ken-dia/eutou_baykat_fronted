@@ -1,3 +1,4 @@
+import { TopbarComponent } from './pages/shared-components/topbar/topbar.component';
 import { FrontOfficeRoutingModule } from './frontoffice-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,7 +20,6 @@ import { FilterBtnsComponent } from './pages/home-page/filter-btns/filter-btns.c
 import { NavbarComponent } from './pages/shared-components/navbar/navbar.component';
 import { PartnerSectionComponent } from './pages/shared-components/partner-section/partner-section.component';
 import { FooterComponent } from './pages/shared-components/footer/footer.component';
-import { TopbarComponent } from './pages/shared-components/topbar/topbar.component';
 import { AdvertisingComponent } from './pages/shared-components/advertising/advertising.component';
 import { CategoryTableItemComponent } from './pages/shared-components/category-table-item/category-table-item.component';
 import { ProductItemComponent } from './pages/shared-components/product-item/product-item.component';
