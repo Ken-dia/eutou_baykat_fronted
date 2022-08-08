@@ -1,0 +1,20 @@
+<div *ngIf="!loading else loadingShow">
+  <div class="container">
+    <div *ngFor="let notify of notifications">
+      <button mat-stroked-button [ngClass]="notify.isRead ? 'is-read' : 'no-read'" [disabled]="notify.isRead">
+      <div>
+        <h4><strong>{{ notify.title }}</strong></h4>
+        <span>{{ notify.message }}</span>
+        <span *ngIf="notify.type === 'CreationProduit'">
+          <button mat-button (click)="viewAnnonce(notify._id, notify.data.id)" color="primary" style="text-decoration: none;">Voir l'annonce</button>
+        </span>
+      </div>
+    </button>
+    </div>
+  </div>
+</div>
+<ng-template #loadingShow>
+  <div class="text-center">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+</ng-template>
