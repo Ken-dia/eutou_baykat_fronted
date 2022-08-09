@@ -12,8 +12,11 @@
       </ul>
       <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
         <li class="nav-item">
-          <button mat-icon-button color="basic" aria-label="Example icon button with a menu icon">
-            <mat-icon class="btn-icon">circle_notifications</mat-icon>
+          <button mat-icon-button color="basic" aria-label="Example icon button with a menu icon" (click)="notify()">
+
+            <!-- <span [matBadge]="count" matBadgeOverlap="false"> -->
+              <mat-icon class="btn-icon" [matBadge]="count" matBadgeColor="warn" matBadgeSize="small">circle_notifications</mat-icon>
+            <!-- </span> -->
           </button>
         </li>
         <li class="nav-item">

@@ -20,6 +20,7 @@ import { ProduitDetailComponent } from './components/produit-detail/produit-deta
 import { GererAnnoncesComponent } from './components/gerer-annonces/gerer-annonces.component';
 import { FavorisComponent } from './components/favoris/favoris.component';
 import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 
 
@@ -41,7 +42,8 @@ import { DashboardUserComponent } from './components/dashboard-user/dashboard-us
     ProduitDetailComponent,
     GererAnnoncesComponent,
     FavorisComponent,
-    DashboardUserComponent
+    DashboardUserComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,

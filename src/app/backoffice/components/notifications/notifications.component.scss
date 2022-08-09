@@ -1,0 +1,19 @@
+.mat-progress-spinner {
+  display: inline;
+}
+.no-read{
+  background-color: rgb(222, 236, 227);
+}
+.mat-card {
+  width: 100%;
+  margin-bottom: 20px;
+}
+button.no-read,.is-read {
+  padding: 10px;
+  text-align: start;
+  margin-bottom: 20px;
+  width: 600px;
+}
+button.is-read {
+  color: grey !important;
+}

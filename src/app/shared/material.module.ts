@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatBadgeModule } from '@angular/material/badge';
 
 const MODULES = [
   MatButtonModule,
@@ -39,6 +40,7 @@ const MODULES = [
   MatTabsModule,
   MatTooltipModule,
   MatProgressSpinnerModule,
+  MatBadgeModule
 
 ];
 @NgModule({
