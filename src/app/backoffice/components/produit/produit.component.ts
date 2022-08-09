@@ -11,13 +11,18 @@ export class ProduitComponent implements OnInit {
   displayedColumns: string[] = ['libelle','vendeur','categorie','created_at','status', 'view'];
 
   produits = [];
+  loading: Boolean = true;
   constructor(private produitService: ProduitService, private router: Router) { }
 
   ngOnInit(): void {
     this.index();
   }
   index() {
-    this.produitService.getAll().subscribe( data => this.produits = data );
+    this.produitService.getAll().subscribe( data => {
+      this.produits = data;
+      this.loading = false;
+    }, err => this.loading = false
+    );
   }
   activedProduct(produit: any) {
 

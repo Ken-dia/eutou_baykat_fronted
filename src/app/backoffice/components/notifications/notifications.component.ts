@@ -1,6 +1,7 @@
 import { NotificationsService } from './../../services/notifications.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/frontoffice/services/auth/token-storage.service';
 
 @Component({
   selector: 'app-notifications',
@@ -9,10 +10,20 @@ import { Router } from '@angular/router';
 })
 export class NotificationsComponent implements OnInit {
   loading: Boolean = true;
+  currentUser?: any;
   notifications: any = [];
-  constructor(private notificationsService: NotificationsService, private router: Router) { }
+  isAdmin: Boolean = false;
+  constructor(
+    private notificationsService: NotificationsService,
+    private router: Router,
+    private storageService: StorageService
+
+     ) { }
 
   ngOnInit(): void {
+    this.currentUser = this.storageService.getUser();
+    this.isAdmin = this.currentUser.roles.includes('ROLE_ADMIN');
+    console.log(this.isAdmin);
     this.index();
   }
   index() {
@@ -26,7 +37,8 @@ export class NotificationsComponent implements OnInit {
   }
   viewAnnonce(notify_id: any, product_id: any) {
     this.notificationsService.isRead(notify_id).subscribe(data => console.log(data));
-    this.router.navigate(['dashboard/admin/produit-detail', product_id]);
+    const url = this.isAdmin ? 'admin' : 'user';
+    this.router.navigate(['dashboard/'+ url + '/produit-detail', product_id]);
   }
   readNoty(notify_id: any) {
     this.notificationsService.isRead(notify_id).subscribe(data => this.index());

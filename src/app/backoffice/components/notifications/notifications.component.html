@@ -8,6 +8,9 @@
         <span *ngIf="notify.type === 'CreationProduit'">
           <button mat-button (click)="viewAnnonce(notify._id, notify.data.id)" color="primary" style="text-decoration: none;">Voir l'annonce</button>
         </span>
+        <span *ngIf="notify.type === 'activedProduct'">
+          <button mat-button (click)="viewAnnonce(notify._id, notify.data.id)" color="primary" style="text-decoration: none;">Voir produit</button>
+        </span>
       </div>
     </button>
     </div>

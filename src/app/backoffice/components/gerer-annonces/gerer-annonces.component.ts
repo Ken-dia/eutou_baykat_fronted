@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class GererAnnoncesComponent implements OnInit {
   produits = [];
   currentUser?: any;
-  loading: Boolean = false;
+  loading: Boolean = true;
   displayedColumns: string[] = ['libelle','description','categorie','created_at','status', 'actions'];
   constructor(
     private storageService: StorageService,
@@ -25,7 +25,11 @@ export class GererAnnoncesComponent implements OnInit {
   }
 
   index() {
-    this.produitService.userProduits(this.currentUser.id).subscribe(data => this.produits = data);
+    this.loading = true;
+    this.produitService.userProduits(this.currentUser.id).subscribe(data => {
+      this.produits = data;
+      this.loading = false
+    }, err => this.loading = false);
   }
   view(id: any) {
     this.router.navigate(['dashboard/user/produit-detail', id]);

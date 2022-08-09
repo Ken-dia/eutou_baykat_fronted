@@ -14,6 +14,8 @@ export class ProduitDetailComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[] = [];
   galleryImages: NgxGalleryImage[] = [];
   currentUser?: any;
+  loading: Boolean = true;
+  isError: Boolean = false;
   isAdmin: Boolean = false;
   isVendeur: Boolean = false;
   isAcheteur: Boolean = false;
@@ -33,10 +35,18 @@ export class ProduitDetailComponent implements OnInit {
   }
 
   index(id: any) {
+    this.isError = false;
+    this.loading = true;
     this.produitService.findById(id).subscribe(data => {
       this.produit = data;
       this.setGallery();
-    });
+      this.loading = false;
+    }, error => {
+      console.log(error);
+      this.isError = true;
+      this.loading = false;
+    }
+    );
   }
   getImages(){
     const imageUrls= []
