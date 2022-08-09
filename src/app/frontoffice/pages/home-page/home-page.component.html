@@ -1,24 +1,20 @@
 <app-hero></app-hero>
+
+<app-product-section
+  title="Les plus récents"
+  [products]="products"
+></app-product-section>
+
 <app-category-table-section
   [categories]="categories"
 ></app-category-table-section>
-
-<app-product-section
-  title="titleTest"
-  [products]="products"
-  [categories]="categories"
-></app-product-section>
 
 <app-advertising [advertising]="advertising1"></app-advertising>
+
 <app-product-section
-  title="titleTest"
+  title="Par Régions"
   [products]="products"
   [categories]="categories"
 ></app-product-section>
 
-<app-category-table-section
-  [categories]="categories"
-></app-category-table-section>
-
 <app-testimonial-section></app-testimonial-section>
-<app-advertising [advertising]="advertising2"></app-advertising>

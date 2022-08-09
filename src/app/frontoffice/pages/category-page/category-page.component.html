@@ -1,16 +1,18 @@
 <div class="container">
-  <app-breadcrumb></app-breadcrumb>
-  <section class="product-section">
-    <div>
-      <!-- <div *ngFor="let categories of Allcategories; let i = index"> -->
-      <app-category-table-item
-        *ngFor="let category of Allcategories"
-        [category]="category"
-      ></app-category-table-item>
-      <!-- </div> -->
-    </div>
-    <div class="products-container">
-      <app-product-section [products]="products"></app-product-section>
-    </div>
-  </section>
+  <div class="page-container">
+    <app-breadcrumb></app-breadcrumb>
+    <section class="product-section">
+      <div>
+        <!-- <div *ngFor="let categories of Allcategories; let i = index"> -->
+        <app-category-table-item
+          *ngFor="let category of Allcategories"
+          [category]="category"
+        ></app-category-table-item>
+        <!-- </div> -->
+      </div>
+      <div class="products-container">
+        <app-product-section [products]="products"></app-product-section>
+      </div>
+    </section>
+  </div>
 </div>

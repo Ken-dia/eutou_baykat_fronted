@@ -1,13 +1,12 @@
 .img-container {
-  height: 80vh;
+  height: 40vh;
   position: relative;
 }
 
 .img-container img {
   width: 100%;
   height: 100%;
-  // filter: grayscale(50%);
-  filter: blur(3px);
+  filter: grayscale(30%);
 }
 
 .text-box {
