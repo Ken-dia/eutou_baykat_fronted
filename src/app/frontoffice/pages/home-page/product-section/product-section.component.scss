@@ -1,17 +1,18 @@
 .container {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 92px 0;
+  padding: 64px 0;
 }
 
 h2 {
   text-align: center;
+  font-size: 30px;
   margin-bottom: 48px;
 }
 
 .products-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
-  gap: 32px;
+  gap: 12px;
   justify-content: center;
 }

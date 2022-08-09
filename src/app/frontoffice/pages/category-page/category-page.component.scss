@@ -3,9 +3,6 @@
   grid-template-columns: 1fr 2fr;
 }
 
-.products-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
-  gap: 32px;
-  justify-content: center;
+.page-container {
+  padding: 0;
 }

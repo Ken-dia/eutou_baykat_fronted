@@ -9,5 +9,6 @@ export const environment = {
     storageBucket: 'eutou-baykat.appspot.com',
     messagingSenderId: '371965727151',
     appId: '1:371965727151:web:056684055f325950f5df5a',
+    localApiUrl: 'http://localhost:8044/',
   },
 };

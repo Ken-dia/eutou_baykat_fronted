@@ -1,60 +1,56 @@
-.navbar {
+.navBar {
+  font-size: 16px;
   background-color: #fff;
   color: #333;
-  padding: 32px;
+  font-weight: 600;
+  @media screen and (max-width: 976px) {
+    display: none;
+  }
 }
 
 .navbar-container {
-  max-width: 1300px;
+  max-width: 1024px;
   margin: 0 auto;
+  padding: 8px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0 32px;
-  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  // justify-items: center;
   align-items: center;
-}
-
-@media screen and (max-width: 1072px) {
-  .navbar-container {
-    display: none;
-  }
 }
 
 .logo {
   width: 250px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .nav-links {
   display: flex;
   justify-content: center;
-  gap: 16px;
   align-items: center;
 }
 
 .nav-link {
   color: #333;
-  font-size: 20px;
   font-weight: 600;
   text-transform: capitalize;
-  padding: 8px;
+  padding: 12px;
 }
 
 .navbar-buttons {
+  justify-self: end;
   display: flex;
   gap: 16px;
   align-items: center;
 }
 
 .icon {
-  font-size: 20px;
   color: #333;
   padding: 8px;
 }
 
 a {
   cursor: pointer;
-  font-size: 20px;
   font-weight: 600;
 }
 
