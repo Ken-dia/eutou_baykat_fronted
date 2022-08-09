@@ -1,7 +1,7 @@
 <div *ngIf="!loading else loadingShow">
   <div class="container">
     <div *ngFor="let notify of notifications">
-      <button mat-stroked-button [ngClass]="notify.isRead ? 'is-read' : 'no-read'" [disabled]="notify.isRead">
+      <button mat-stroked-button [ngClass]="notify.isRead ? 'is-read' : 'no-read'" [disabled]="notify.isRead" (click)="readNoty(notify._id)">
       <div>
         <h4><strong>{{ notify.title }}</strong></h4>
         <span>{{ notify.message }}</span>

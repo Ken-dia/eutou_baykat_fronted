@@ -28,5 +28,8 @@ export class NotificationsComponent implements OnInit {
     this.notificationsService.isRead(notify_id).subscribe(data => console.log(data));
     this.router.navigate(['dashboard/admin/produit-detail', product_id]);
   }
+  readNoty(notify_id: any) {
+    this.notificationsService.isRead(notify_id).subscribe(data => this.index());
+  }
 
 }

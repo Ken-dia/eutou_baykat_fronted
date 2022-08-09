@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class GererAnnoncesComponent implements OnInit {
   produits = [];
   currentUser?: any;
+  loading: Boolean = false;
   displayedColumns: string[] = ['libelle','description','categorie','created_at','status', 'actions'];
   constructor(
     private storageService: StorageService,
