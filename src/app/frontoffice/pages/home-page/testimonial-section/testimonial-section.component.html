@@ -1,9 +1,11 @@
-<section class="container">
-  <h4>Témoignages</h4>
-  <div class="testimonials-container">
-    <app-testimonial
-      *ngFor="let testimonial of testimonials"
-      [testimonial]="testimonial"
-    ></app-testimonial>
+<section class="testimonial-container">
+  <div class="container">
+    <h2>Témoignages</h2>
+    <div class="testimonials-container">
+      <app-testimonial
+        *ngFor="let testimonial of testimonials"
+        [testimonial]="testimonial"
+      ></app-testimonial>
+    </div>
   </div>
 </section>
