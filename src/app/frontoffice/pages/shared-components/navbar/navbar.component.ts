@@ -7,10 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+  menuIcon: boolean = false;
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
   login() {
-    this.router.navigate(['login'])
+    this.router.navigate(['login']);
+  }
+
+  toggle() {
+    this.menuIcon = !this.menuIcon;
   }
 }

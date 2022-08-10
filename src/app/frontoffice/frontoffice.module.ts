@@ -25,6 +25,7 @@ import { CategoryTableItemComponent } from './pages/shared-components/category-t
 import { ProductItemComponent } from './pages/shared-components/product-item/product-item.component';
 import { BreadcrumbComponent } from './pages/shared-components/breadcrumb/breadcrumb.component';
 import { SharedModule } from '../shared/shared.module';
+import { FavorisComponent } from './pages/favoris/favoris.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { SharedModule } from '../shared/shared.module';
     ProductItemComponent,
     BreadcrumbComponent,
     NavbarComponent,
+    FavorisComponent,
   ],
   exports: [
     CategoryTableSectionComponent,

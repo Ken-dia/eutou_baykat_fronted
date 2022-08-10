@@ -10,8 +10,14 @@
         ></app-category-table-item>
         <!-- </div> -->
       </div>
-      <div class="products-container">
+      <div *ngIf="!loading" class="products-container correct-container">
         <app-product-section [products]="products"></app-product-section>
+      </div>
+      <div *ngIf="loading" class="center">
+        <div class="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </section>
   </div>

@@ -20,6 +20,7 @@ const routes: Routes = [
       },
       { path: 'home', component: HomePageComponent },
       { path: 'about', component: NotFoundComponent },
+      { path: 'favoris', component: NotFoundComponent },
       { path: 'category/:id', component: CategoryPageComponent },
       { path: 'product/:id', component: ProductPageComponent },
     ],

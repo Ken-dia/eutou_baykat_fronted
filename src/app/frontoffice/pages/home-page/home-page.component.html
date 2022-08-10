@@ -1,9 +1,20 @@
 <app-hero></app-hero>
 
-<app-product-section
-  title="Les plus récents"
-  [products]="products"
-></app-product-section>
+<div *ngIf="!loading">
+  <app-product-section
+    title="Les plus récents"
+    [products]="productsTemp"
+  ></app-product-section>
+</div>
+
+<div class="center" *ngIf="loading">
+  <div class="lds-ripple">
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<!-- <app-advertising [advertising]="advertising1"></app-advertising> -->
 
 <app-category-table-section
   [categories]="categories"
@@ -11,10 +22,20 @@
 
 <app-advertising [advertising]="advertising1"></app-advertising>
 
-<app-product-section
-  title="Par Régions"
-  [products]="products"
-  [categories]="categories"
-></app-product-section>
+<div *ngIf="!loading">
+  <app-product-section
+    (filterEvent)="onFilter($event)"
+    title="Par Régions"
+    [products]="products"
+    [regions]="regions"
+  ></app-product-section>
+</div>
+
+<div class="center" *ngIf="loading">
+  <div class="lds-ripple">
+    <div></div>
+    <div></div>
+  </div>
+</div>
 
 <app-testimonial-section></app-testimonial-section>

@@ -11,6 +11,7 @@ import { ProductsService } from '../../services/products/products.service';
   styleUrls: ['./category-page.component.scss'],
 })
 export class CategoryPageComponent implements OnInit {
+  loading: boolean = true;
   products!: ProductModel[];
   Allcategories!: categoryModel[];
 
@@ -35,6 +36,7 @@ export class CategoryPageComponent implements OnInit {
   }
 
   categoryFilter(categoryID: string) {
+    this.loading = true;
     this.productservice.getProducts().subscribe((data: ProductModel[]) => {
       this.products = data;
       console.log(this.products);
@@ -46,6 +48,7 @@ export class CategoryPageComponent implements OnInit {
           }
         });
         this.products = categoryProducts;
+        this.loading = false;
       });
     });
   }

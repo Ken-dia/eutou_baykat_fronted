@@ -1,7 +1,17 @@
+section {
+  padding: 48px 0;
+}
+
 .container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, 150px);
+  justify-content: center;
   gap: 16px;
 
-  margin-bottom: 64px;
+  padding: 64px 0;
+}
+
+h2 {
+  font-size: 36px;
+  text-align: center;
 }
