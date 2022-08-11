@@ -88,7 +88,7 @@
               <button mat-raised-button class="success" (click)="valider(produit._id)" [disabled]="produit.status">Valider</button>
             </div>
             <div>
-              <button mat-raised-button class="danger" (click)="rejeter(produit._id)" [disabled]="!produit.status">Rejeter</button>
+              <button mat-raised-button class="danger" (click)="openModal(formMotif)" [disabled]="!produit.status">Rejeter</button>
             </div>
           </div>
           </div>
@@ -104,5 +104,24 @@
 <ng-template #notFound>
   <div class="text-center">
     <div class="alert-not-found">Produit introuvable .</div>
+  </div>
+</ng-template>
+<ng-template #formMotif>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Motif du rejet</h4>
+  </div>
+  <div class="modal-body">
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Modifs</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [formControl]="motif"></textarea>
+        <small class="text-danger" *ngIf="motif.errors && showError">Ce champ est obligatoire.!</small>
+      </div>
+
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+      <button class="danger me-md-2 mb-2" type="button" (click)="modalRef?.hide()">Annuler</button>
+      <button class="primary me-md-2 mb-2" type="button" (click)="rejeter(produit._id)">Rejeter</button>
+    </div>
+
   </div>
 </ng-template>
