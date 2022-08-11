@@ -1,0 +1,55 @@
+<div class="navBar">
+  <div class="navbar-container">
+    <div routerLink="/home" class="logo">
+      <img src="/assets/img/logo.jpg" alt="EutouBaykat logo" />
+    </div>
+    <div class="nav-links">
+      <a class="nav-link" routerLink="/home">Acceuil</a>
+      <a class="nav-link" routerLink="/home" fragment="categories"
+        >Categrories</a
+      >
+      <a class="nav-link" routerLink="/home" fragment="contact">Contact</a>
+    </div>
+    <div class="navbar-buttons">
+      <a href="#" class="icon">
+        <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+      </a>
+      <a routerLink="/favoris" class="icon">
+        <i class="fa-regular fa-heart"></i>
+      </a>
+      <a class="login" (click)="login()">Connexion</a>
+    </div>
+  </div>
+</div>
+
+<div class="navbar-responsive-container">
+  <div class="navbar-responsive">
+    <div routerLink="/home" class="logo">
+      <img src="/assets/img/logo.jpg" alt="EutouBaykat logo" />
+    </div>
+    <div>
+      <button (click)="toggle()" class="menu-icon">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+  <div [ngClass]="{ addSidebar: menuIcon }" class="sidebar">
+    <div class="navbar-buttons">
+      <a href="#" class="icon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <a routerLink="/favoris" class="icon">
+        <i class="fa-regular fa-heart"></i>
+      </a>
+      <a class="login" (click)="login()">Connexion</a>
+    </div>
+    <div class="nav-links">
+      <a class="nav-link" routerLink="/home">Acceuil</a>
+      <a class="nav-link" routerLink="/home" fragment="categories"
+        >Categrories</a
+      >
+      <a class="nav-link" routerLink="/about">Team</a>
+      <a class="nav-link" routerLink="/home" fragment="contact">Contact</a>
+    </div>
+  </div>
+</div>

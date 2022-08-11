@@ -21,23 +21,16 @@ export class CategorieComponent implements OnInit {
   public libelle = new FormControl('', Validators.required);
   public description = new FormControl('', Validators.required);
   public showError: boolean = false;
+  loading: Boolean = true;
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    //this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   constructor(private categorieService: CategoriesService,private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.index()
   }
- /*  getErrorMessage() {
-    if(this.libelle.hasError('required')) {
-      return 'Veuillez saisir le libellé.'
-    }
-    if(this.description.hasError('required')) {
-      return 'Veuillez saisir la description.'
-    }
-  } */
+
   openModal(formCategorie: TemplateRef<any>, categorie: Categorie) {
     this.modalRef = this.modalService.show(formCategorie);
     if(categorie._id) {
@@ -49,7 +42,10 @@ export class CategorieComponent implements OnInit {
     }
   }
   index() {
-    this.categorieService.getCategories().subscribe( data => this.dataSource = data);
+    this.categorieService.getCategories().subscribe( data => {
+      this.dataSource = data;
+      this.loading = false;
+    }, err => this.loading = false);
   }
   close() {
     this.modalRef?.hide()

@@ -1,0 +1,26 @@
+<div
+  [routerLink]="['/product', product._id]"
+  class="product"
+  *ngIf="product; else loading"
+>
+  <div class="img-container">
+    <span>
+      <img src="{{ product.images[0].url }}" alt="image-product" />
+    </span>
+  </div>
+  <div class="product-locality-details">
+    <p class="name">{{ product.libelle }}</p>
+    <p class="locality">de {{ product.user.region }}</p>
+  </div>
+  <div class="product-price-details">
+    <p>{{ product.quantite }} fcfa</p>
+    <p>/</p>
+    <p>{{ product.prixes[0].valeur }} {{ product.prixes[0].unite.libelle }}</p>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="text-center">
+    <p>test</p>
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+</ng-template>

@@ -1,0 +1,13 @@
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 56px 0;
+}
+
+.partners-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+}

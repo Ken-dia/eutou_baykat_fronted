@@ -6,12 +6,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: "",
-    loadChildren: () => import('./frontoffice/frontoffice.module').then(mod => mod.FrontofficeModule),
+    path: '',
+    loadChildren: () =>
+      import('./frontoffice/frontoffice.module').then(
+        (mod) => mod.FrontofficeModule
+      ),
   },
   {
-    path: "dashboard",
-    loadChildren: () => import('./backoffice/backoffice.module').then( mod => mod.BackofficeModule)
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./backoffice/backoffice.module').then(
+        (mod) => mod.BackofficeModule
+      ),
   },
   /* {
     path: "",
@@ -19,13 +25,13 @@ const routes: Routes = [
     pathMatch: "full"
   }, */
   {
-    path: "**",
-    component: NotFoundComponent
-  }
+    path: '**',
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

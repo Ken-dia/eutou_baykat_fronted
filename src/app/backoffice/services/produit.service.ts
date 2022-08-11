@@ -7,6 +7,7 @@ import * as uuid from 'uuid';
 import { FileUpload } from '../models/file-upload.model';
 import { StorageService } from 'src/app/frontoffice/services/auth/token-storage.service';
 import { environment } from 'src/environments/environment';
+import { Motif } from '../models/motif.model';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,19 @@ export class ProduitService {
 
   getAll(): Observable<any> {
     return this.http.get(this.baseUrl);
+  }
+
+  findById(id: any): Observable<any> {
+    return this.http.get(this.baseUrl+'/'+id);
+  }
+  actived(id: any): Observable<any> {
+    return this.http.get(this.baseUrl+'/actived/'+id);
+  }
+  disabled(id: string, body?: any): Observable<any> {
+    return this.http.put(this.baseUrl+'/disabled/'+id, body);
+  }
+  deleteOne(id: any) {
+    return this.http.delete(this.baseUrl+'/'+id);
   }
 
 }

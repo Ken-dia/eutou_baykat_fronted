@@ -1,3 +1,4 @@
+import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ProduitDetailComponent } from './components/produit-detail/produit-detail.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { BoardUserComponent } from './components/board-user/board-user.component';
@@ -81,7 +82,11 @@ const routes: Routes = [
         path: "profile",
         component: ProfileComponent
       },
-       {
+      {
+        path: 'notifications',
+        component: NotificationsComponent
+      },
+      {
         path: "user",
         children: [
           {
@@ -107,6 +112,10 @@ const routes: Routes = [
           {
             path: "stats",
             component: DashboardUserComponent
+          },
+          {
+            path: 'produit-detail/:id',
+            component: ProduitDetailComponent
           },
           {
             path: "",

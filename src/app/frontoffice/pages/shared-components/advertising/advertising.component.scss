@@ -1,0 +1,29 @@
+.img-container {
+  height: 40vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url("/assets/img/ads2.jpg") center/cover fixed no-repeat;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  transform: translateY(-3px);
+}
+.text-box {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-box h2 {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 32px;
+  line-height: 1.4;
+}

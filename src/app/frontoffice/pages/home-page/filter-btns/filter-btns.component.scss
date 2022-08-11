@@ -1,0 +1,11 @@
+.btns-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+button:not(.btn-md-active) {
+  color: #333;
+}

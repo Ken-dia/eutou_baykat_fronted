@@ -1,0 +1,53 @@
+.topbar {
+  font-size: 14px;
+  background-color: #467806;
+  padding: 8px;
+  color: #fff;
+  @media screen and (max-width: 976px) {
+    display: none;
+  }
+}
+
+.topbar-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.number:link,
+.number:visited {
+  text-decoration: none;
+}
+
+.number:hover,
+.number:active {
+  text-decoration: none;
+  color: #fff;
+  text-decoration: underline;
+}
+
+.phone {
+  justify-self: start;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.phone-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.title {
+  justify-self: center;
+  margin-bottom: 0;
+}
+
+.social-links {
+  justify-self: end;
+
+  display: flex;
+  gap: 24px;
+}

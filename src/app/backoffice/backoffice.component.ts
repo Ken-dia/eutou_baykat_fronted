@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../frontoffice/services/auth/auth.service';
 import { StorageService } from '../frontoffice/services/auth/token-storage.service';
+import { NotificationsService } from './services/notifications.service';
 
 @Component({
   selector: 'app-backoffice',
@@ -19,6 +20,7 @@ export class BackofficeComponent implements OnInit {
   selectedColor = "13EB28";
   menus?: any;
   tokenStage?: any;
+  count?: any ;
   menuAdmin = [
     {
     icon : 'dashboard',
@@ -73,7 +75,12 @@ export class BackofficeComponent implements OnInit {
       link: '/dashboard/admin/produits'
     } */
   ]
-  constructor(private storageService: StorageService, private authService: AuthService,private router: Router) { }
+  constructor(
+    private storageService: StorageService,
+    private authService: AuthService,
+    private notityService: NotificationsService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
@@ -84,6 +91,7 @@ export class BackofficeComponent implements OnInit {
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
       this.username = user.username;
       this.menus = this.showAdminBoard ? this.menuAdmin : this.menuUser;
+      this.countNotify();
     }
   }
   logout(): void {
@@ -98,7 +106,17 @@ export class BackofficeComponent implements OnInit {
       }
     });
 
-    //window.location.reload();
+  }
+  notify() {
+    this.count = null;
+    this.router.navigate(['dashboard/notifications']);
+  }
+  countNotify() {
+    this.notityService.countNotify().subscribe(data => {
+      if(data != 0) {
+        this.count = data;
+      }
+    });
   }
 
 }

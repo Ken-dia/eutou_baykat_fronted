@@ -1,18 +1,17 @@
-.container {
-  padding: 92px 0;
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
-h4 {
-  text-align: center;
-  text-decoration: underline;
-  text-transform: capitalize;
-  margin-bottom: 64px;
+.testimonial-container {
+  padding: 32px 0;
+  height: 55vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+    url("/assets/img/bcTestimonial.jpg") center/cover fixed no-repeat;
+  color: #fff;
+  display: grid;
+  place-items: center;
 }
 
 .testimonials-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, 500px);
+  gap: 32px;
   align-items: center;
+  justify-content: center;
 }

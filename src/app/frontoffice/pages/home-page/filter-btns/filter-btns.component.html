@@ -1,0 +1,9 @@
+<div class="btns-container">
+  <button
+    *ngFor="let region of regions"
+    class="btn-md btn-md-active"
+    (click)="onFilter(region)"
+  >
+    {{ region }}
+  </button>
+</div>

@@ -13,6 +13,7 @@ export class UserDetailComponent implements OnInit {
   user_id?: string;
   produits = [];
   user? : any;
+  loading: Boolean = true;
   displayedColumns: string[] = ['libelle','created_at','status', 'view'];
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private produitService: ProduitService, private router: Router) { }
 
@@ -25,11 +26,17 @@ export class UserDetailComponent implements OnInit {
   }
 
   async show() {
-    this.userService.show(this.user_id).subscribe(data => this.user = data);
+    this.userService.show(this.user_id).subscribe(data =>{
+      this.user = data
+    });
   }
 
   getProduits() {
-    this.produitService.userProduits(this.user_id).subscribe(data => this.produits = data);
+    this.produitService.userProduits(this.user_id).subscribe(data => {
+      this.produits = data;
+      this.loading = false;
+    }, err => this.loading = false
+    );
   }
   isActive(user: any) {
     this.userService.isActive(user._id, {value : !user.enabled}).subscribe( data => this.show());

@@ -47,3 +47,15 @@
  /*change color of underline when focused*/
  background-color: green !important;;
 }
+button.btn-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 34px;
+  background-color: #467806;
+  color: white !important;
+}
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #f0f1f5;
+}
