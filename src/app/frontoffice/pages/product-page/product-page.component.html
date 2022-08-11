@@ -24,7 +24,7 @@
               src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             />
             <span class="name-user">
-              <strong>{{ product.user.prenom }} {{product.user.nom }}</strong>
+              <strong>{{ product.user.prenom }} {{ product.user.nom }}</strong>
             </span>
             <span class="mx-2">
               <mat-icon class="compte-verified">verified_user</mat-icon>Compte
@@ -118,8 +118,11 @@
     </div>
   </div>
   <ng-template #loading>
-    <div class="text-center">
-      <mat-spinner diameter="50"></mat-spinner>
+    <div class="center">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </ng-template>
 </div>

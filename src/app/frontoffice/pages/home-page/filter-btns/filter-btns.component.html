@@ -1,9 +1,9 @@
 <div class="btns-container">
   <button
-    *ngFor="let category of categories"
+    *ngFor="let region of regions"
     class="btn-md btn-md-active"
-    (click)="onFilter(category.libelle)"
+    (click)="onFilter(region)"
   >
-    {{ category.libelle }}
+    {{ region }}
   </button>
 </div>

@@ -1,28 +1,25 @@
 footer {
-  padding: 92px 0;
+  padding: 64px 0;
   background-color: #467806;
   color: #fff;
+  font-size: 18px;
 }
 
-.container {
-  max-width: 1300px;
-  margin: 0 auto;
+.team {
+  font-size: 16px;
+  font-style: italic;
   display: flex;
-  justify-content: space-between;
-  //   align-items: center;
-  gap: 32px;
-
+  justify-content: center;
+  gap: 12px;
   margin-bottom: 32px;
 }
 
 .contacts {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-h4 {
-  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
 }
 
 .item {
@@ -31,14 +28,12 @@ h4 {
   gap: 16px;
 }
 
-.about {
-  max-width: 40%;
+.item p {
+  margin-bottom: 0;
 }
 
-.team {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.about {
+  max-width: 40%;
 }
 
 .social-links {
@@ -47,7 +42,7 @@ h4 {
   gap: 32px;
   align-items: center;
 
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 }
 
 .social-links a {
@@ -56,4 +51,5 @@ h4 {
 
 .copyright {
   text-align: center;
+  font-style: italic;
 }

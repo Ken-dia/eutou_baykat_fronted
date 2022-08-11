@@ -1,5 +1,6 @@
 .btns-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
   justify-content: center;
   align-items: center;
   gap: 16px;

@@ -3,6 +3,7 @@ import { categoryModel } from '../../models/category.model';
 import { ProductModel } from '../../models/product.model';
 import { CategoriesService } from '../../services/categories/categories.service';
 import { ProductsService } from '../../services/products/products.service';
+import { RegionService } from '../../services/region/region.service';
 
 @Component({
   selector: 'app-home-page',
@@ -16,19 +17,16 @@ export class HomePageComponent implements OnInit {
     url: '/register',
     buttonText: 'Créer compte',
   };
-  advertising2 = {
-    img: 'ads2.jpg',
-    message: 'Passer vos bientot vos pré-command',
-    url: '#',
-    buttonText: 'Boutique',
-  };
 
   products: ProductModel[] = [];
+  productsTemp: ProductModel[] = [];
+  regions: string[] = [];
   categories: categoryModel[] = [];
-  categoryChange: string = '';
+  loading: boolean = true;
   constructor(
     private productService: ProductsService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private regionService: RegionService
   ) {
     // this.productService.filterEvent.subscribe((data: string) => {
     //   this.categoryChange = data;
@@ -38,7 +36,15 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data: ProductModel[]) => {
       this.products = data;
+      this.productsTemp = data;
+      this.loading = false;
       console.log(this.products);
+    });
+
+    this.regionService.index().subscribe((data: string[]) => {
+      this.regions = data;
+      console.log(this.regions);
+      // console.log(`categories: ${this.categories}`);
     });
 
     this.categoriesService
@@ -48,19 +54,14 @@ export class HomePageComponent implements OnInit {
         console.log(this.categories);
         // console.log(`categories: ${this.categories}`);
       });
-
-    this.categoryFilter(this.categoryChange);
   }
 
-  categoryFilter(categoryLibelle: string) {
-    let categoryProducts: ProductModel[] = [];
-    this.products.forEach((product) => {
-      product.categories.forEach((category) => {
-        if (category.libelle === categoryLibelle) {
-          categoryProducts.push(product);
-        }
-      });
-      this.products = categoryProducts;
+  onFilter(region: string) {
+    console.log(region);
+    const tempProducts = this.productsTemp.filter((product) => {
+      return product.user.region === region;
     });
+    this.products = tempProducts;
+    console.log(this.products);
   }
 }
