@@ -1,8 +1,11 @@
 import { StorageService } from './../../../frontoffice/services/auth/token-storage.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProduitService } from '../../services/produit.service';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { FormControl, Validators } from '@angular/forms';
+import { Motif } from '../../models/motif.model';
 
 @Component({
   selector: 'app-produit-detail',
@@ -19,11 +22,17 @@ export class ProduitDetailComponent implements OnInit {
   isAdmin: Boolean = false;
   isVendeur: Boolean = false;
   isAcheteur: Boolean = false;
+  modalRef?: BsModalRef;
+  public data = <Motif> {};
+  public showError: boolean = false;
+  public motif = new FormControl('', Validators.required);
   constructor(
     private produitService: ProduitService,
     private activatedRoute: ActivatedRoute,
     private storageService: StorageService,
-    private router: Router) { }
+    private router: Router,
+    private modalService: BsModalService
+    ) { }
 
   ngOnInit(): void {
     this.currentUser = this.storageService.getUser();
@@ -91,10 +100,24 @@ export class ProduitDetailComponent implements OnInit {
       this.index(id);
     })
   }
+
   rejeter(id: any) {
-    this.produitService.disabled(id).subscribe(data => {
+    if(!this.motif.value) {
+      this.showError = true;
+      return ;
+    }
+    this.data.motif = this.motif.value;
+    console.log(this.data);
+    this.produitService.disabled(id, this.data).subscribe(res => {
+      this.showError = false;
+      this.motif.reset();
+      this.modalRef?.hide();
       this.index(id);
-    })
+    });
   }
+  openModal(formMotif: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(formMotif);
+  }
+
 
 }

@@ -4,7 +4,7 @@
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
-    <button mat-raised-button (click)="openModal(formCategorie, selectedCategorie)" class="btn-dialog">Nouveau Categorie</button>
+    <button mat-raised-button (click)="openModal(formCategorie, selectedCategorie)" class="btn-dialog">Nouvelle Categorie</button>
   </div>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
