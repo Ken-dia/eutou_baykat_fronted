@@ -4,9 +4,9 @@
       <img src="/assets/img/logo.jpg" alt="EutouBaykat logo" />
     </div>
     <div class="nav-links">
-      <a class="nav-link" routerLink="/home">Acceuil</a>
+      <a class="nav-link" routerLink="/home">Accueil</a>
       <a class="nav-link" routerLink="/home" fragment="categories"
-        >Categrories</a
+        >Catégories</a
       >
       <a class="nav-link" routerLink="/home" fragment="contact">Contact</a>
     </div>
@@ -17,7 +17,9 @@
       <a routerLink="/favoris" class="icon">
         <i class="fa-regular fa-heart"></i>
       </a>
-      <a class="login" (click)="login()" *ngIf="!isLoggedIn else compteUser">Connexion</a>
+      <a class="login" (click)="login()" *ngIf="!isLoggedIn; else compteUser"
+        >Connexion</a
+      >
     </div>
   </div>
 </div>
@@ -54,13 +56,17 @@
   </div>
 </div>
 <ng-template #compteUser>
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
     <mat-icon>person</mat-icon><span class="ml-1 mt-3"> Mon compte</span>
   </button>
   <mat-menu #menu="matMenu">
-    <button (click)="goTo(menu.link)" mat-menu-item *ngFor="let menu of menus" >
-      <mat-icon>{{menu.icon}}</mat-icon>
-      <span>{{menu.name}}</span>
+    <button (click)="goTo(menu.link)" mat-menu-item *ngFor="let menu of menus">
+      <mat-icon>{{ menu.icon }}</mat-icon>
+      <span>{{ menu.name }}</span>
     </button>
   </mat-menu>
 </ng-template>

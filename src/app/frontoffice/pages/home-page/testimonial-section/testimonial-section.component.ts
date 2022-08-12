@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class TestimonialSectionComponent implements OnInit {
   testimonials = [
     {
-      img: 'testimonial.jpg',
+      img: 'roland.jpeg',
       author: 'Roland Faye',
-      text: ' Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo aperiam commodi excepturi nisi officia aliquam facilis ut sunt nesciunt aut quasi, quos sed ipsa voluptas magnam nobis dicta eum odio!',
+      text: ' "Eutoubaykat me permet de trouver quotidiennement des légumes de qualités pour mes différents restaurants."',
     },
   ];
 
