@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-. Navigate to `https://eutou-baykat.herokuapp.com/home`. The application will automatically reload if you change any of the source files.
+. Navigate to https://eutou-baykat.herokuapp.com/home. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
