@@ -4,5 +4,5 @@ EutouBayKat est une application web qui permet de mettre en relation des agricul
 
 ## Application
 
-[Voir le projet](https://eutou-baykat.herokuapp.com). The application will automatically reload if you change any of the source files.
+[Voir le projet](https://eutou-baykat.herokuapp.com)
 
